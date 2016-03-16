@@ -1,5 +1,8 @@
 # EconMathNote
-Lecture Note for Mathematics for Economics
+Lecture Note for Mathematics for Economics (Seoul National University 212.214-004 2016 Spring class)
+
+This note is highly dependent on the main textbook: Simon, C.P. and Blume, L., "Mathematics for Economists", Norton:1994.
+
 
 # Notice
 
