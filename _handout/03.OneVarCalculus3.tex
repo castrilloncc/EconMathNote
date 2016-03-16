@@ -1,0 +1,127 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage[hangul]{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\author[조남운]{\url{econMath.namun+2016sp@gmail.com}}
+\title{One-Variable Calculus: Chain Rule}
+\subtitle{CH3}
+
+\begin{document}
+
+	\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+}
+%--- Next Frame ---%
+
+\section{Composite Functions and the Chain Rule} % (fold)
+\label{sec:composite_functions_and_the_chain_rule}
+
+\begin{frame}[t]{Derivative of Composite Functions}
+	\begin{defn}
+		[Composition of Functions]
+		\[
+			( h\circ g )(x) := h(g(x))
+		\]
+		$h$: outside function, $g$: inside function
+	\end{defn}
+	In general, $h\circ g \neq g \circ h$
+	\begin{block}
+		{Chain Rule}
+		% Suppose $f = (f_1 \circ f_2 \circ \cdots \circ f_n)(x)=f_1(f_2(\cdots(f_n(x))))$. then,
+		\[
+			\frac{d(f_1 \circ f_2 \circ \cdots \circ f_n)(x)}{dx}=\frac{df_1(f_2(\cdots(f_n(x))))}{dx}= \frac{df_1}{df_2}\frac{df_2}{df_3}\cdots\frac{df_n}{dx}
+		\]
+	\end{block}
+	\[
+		[\cos((\sin(x^3+4x))^{500})]^\prime =?
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+% section composite_functions_and_the_chain_rule (end)
+
+
+\section{Inverse Functions and Their Derivatives} % (fold)
+\label{sec:inverse_functions_and_their_derivatives}
+
+\begin{frame}[t]{Inverse of a Function}
+	\begin{defn}
+		[Inverse Function]
+		Suppose $f:E_1 \rightarrow E_2$. Then $g:E_2\rightarrow E_1$ is an \uline{inverse} of $f$ if\[
+			g(f(x))=x\quad \forall x\in E_1
+		\]\[
+						f(g(x))=x\quad \forall x\in E_2
+		\]
+	\end{defn}
+	\begin{itemize}
+		\item Notation: $g(x)=f^{-1}(x)$
+		\item $(f^{-1}\circ f) (x) = (f\circ f^{-1}) (x)=x$
+		\item Geometrical meaning: Graph of $f^{-1}$ is reflection of the graph of $f$ across 45 degree line
+		\item $\exists f^{-1}$ ($i.e.$, $f$ is invertible) iff $f$ is monotonically increasing [decreasing]
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Derivative of the Inverse Function}
+	\begin{thm}
+		[4.3: Inverse Function Theorem] Suppose $f:I\rightarrow \mathbb{R} \text{ is } \mathbf{C}^1$ Function, $f^\prime \neq 0, x\in I$. Then,
+		\begin{enumerate}
+			\item $\exists f^{-1}$ on $I$
+			\item $f^{-1}\in \mathbf{C}^1$ on interval $f(I)$
+			\item $(f^{-1})^\prime = \frac{1}{f^\prime(f^{-1})}$. more intuitively, 
+			\[
+				\frac{df^{-1}}{dx} = \frac{1}{\frac{df(f^{-1})}{df^{-1}}}=\frac{1}{\frac{dx}{df^{-1}}}
+			\]
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{The Derivative of $x^{m/n}$}
+	\begin{thm}
+		[4.4] \[
+			\forall n\in\mathbb{N},\quad (x^{1/n})^\prime = \frac{1}{n} x^{(1/n)-1}
+		\]
+	\end{thm}
+	\begin{thm}
+		[4.5] \[
+			\forall m,n\in\mathbb{N},\quad (x^{m/n})^\prime = \frac{m}{n} x^{(m/n)-1}
+		\]
+	\end{thm}
+	In general, 
+	\[
+		(x^r)^\prime = rx^{(r-1)}\quad \forall r\in\mathbb{R}
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+% section inverse_functions_and_their_derivatives (end)
+\end{document}

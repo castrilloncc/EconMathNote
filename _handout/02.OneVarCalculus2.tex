@@ -1,0 +1,337 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage[hangul]{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\author[조남운]{\url{econMath.namun+2016sp@gmail.com}}
+\title{One-Variable Calculus: Applications}
+\subtitle{CH3}
+
+\begin{document}
+
+	\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+}
+%--- Next Frame ---%
+
+\section{Using the First Derivatives for Graphing} % (fold)
+\label{sec:using_the_first_derivative_for_graphing}
+
+\begin{frame}[t]{Positive Derivative implies Increasing Function}
+	\begin{thm}[3.1]
+		$f$: continuous $\land$ differentiable at $x_0$
+		\begin{enumerate}
+			\item $f^\prime (x_0)>0 \Rightarrow \exists \bar\alpha,\bar\beta\in\mathbb{R} $ s.t. $x_0\in(\bar\alpha,\bar\beta)\land f$ is increasing on $(\bar\alpha,\bar\beta)$
+			\item $f^\prime (x_0)<0 \Rightarrow \exists \bar\alpha,\bar\beta\in\mathbb{R} $ s.t. $x_0\in(\bar\alpha,\bar\beta)\land f$ is decreasing on $(\bar\alpha,\bar\beta)$
+		\end{enumerate}
+	\end{thm}
+	\begin{thm}
+		[3.2]
+		\begin{enumerate}
+			\item $f^\prime>0$ on $(\bar a, \bar b)\subset D \Rightarrow f$ is increasing on $(\bar a,\bar b)$
+			\item $f^\prime<0$ on $(\bar a, \bar b)\subset D \Rightarrow f$ is decreasing on $(\bar a,\bar b)$
+			\item $f$ is increasing on $(\bar a, \bar b) \Rightarrow f^\prime \ge 0$ on $(\bar a, \bar b)$
+			\item $f$ is decreasing on $(\bar a, \bar b) \Rightarrow f^\prime \le 0$ on $(\bar a, \bar b)$
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Graph Sketching using First Derivatives}
+	\begin{block}{Procedure}
+		\begin{enumerate}[(STEP 1)]
+			\item Find all $x_i^\ast$ s.t. $f^\prime (x_i^\ast)=0$ (critical points), boundary points, and around undefined points
+			\item Calculate $f(x_i^\ast)$
+			\item Make table for graph sketch
+			\begin{itemize}
+				\item $f^\prime >0 \Rightarrow \nearrow$
+				\item $f^\prime <0 \Rightarrow \searrow$
+			\end{itemize}
+		\end{enumerate}
+	\end{block}
+	\[
+		f(x) = x^4 -8x^3 + 18x^2 - 11 \tag{Ex3.1}
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+% section using_the_first_derivative_for_graphing (end)
+
+\section{Second Derivatives and Convexity} % (fold)
+\label{sec:second_derivatives}
+
+\begin{frame}[t]{Convexity and Concavity}
+	\begin{defn}
+		[Convex (Concave up), Concave (Concave down)]
+		$f$ is convex on $(\bar a, \bar b)$ iff:
+		\[
+			f((1-t)\bar a + t \bar b \le (1-t)f(\bar a)+ tf(\bar b),\quad \forall t\in [0,1]
+		\]
+		$f$ is concav on $(\bar a, \bar b)$ iff:
+		\[
+			f((1-t)\bar a + t \bar b \ge (1-t)f(\bar a)+ tf(\bar b),\quad \forall t\in [0,1]
+		\]
+	\end{defn}
+	\begin{center}
+		\begin{tabular}{c|c|c}
+		&	$f^\prime >0 $& $f^\prime<0$	\\
+		\hline\hline
+		$f^{\prime\prime}>0$&	&\\
+		\hline
+		$f^{\prime\prime}<0$&&\\
+		\end{tabular}
+	\end{center}
+\end{frame}
+%--- Next Frame ---%
+
+
+\begin{frame}[t]{Using Second Derivative for Graph Sketch}
+	\begin{block}{Procedure}
+		\begin{enumerate}[(STEP 1)]
+			\item Find all $x_i^\ast$ s.t. $f^\prime (x_i^\ast)=0$ (critical points), \uline{$f^{\prime\prime}(x_i^\ast)=0$}, boundary points, and around undefined points
+			\item Calculate $f(x_i^\ast)$
+			\item Make table for graph sketch
+		\end{enumerate}
+	\end{block}
+	\[
+		f(x) = x^4 -8x^3 + 18x^2 - 11 \tag{Ex3.1}
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+% section second_derivatives (end)
+
+\section{Graphing Rational Functions} % (fold)
+\label{sec:graphing_rational_functions}
+\begin{frame}[t]{Graphing Rational Function}
+	\begin{block}{Procedure}
+		\begin{enumerate}[(STEP 1)]
+			\item Find all $x_i^\ast$ s.t. $f^\prime (x_i^\ast)=0$ (critical points), $f^{\prime\prime}(x_i^\ast)=0$, boundary points, convergence toward undefined points, and tail ($i.e.$, convergence toward $\pm\infty$)
+			\item Calculate $f(x_i^\ast)$
+			\item Make table for graph sketch
+		\end{enumerate}
+	\end{block}
+	\[
+		\tag{Ex3.6} f(x) = \frac{16(x+1)}{(x-2)^2}
+	\]
+\end{frame}
+%--- Next Frame ---%
+% section graphing_rational_functions (end)
+
+\section{Tails and Horizontal Asymptotes} % (fold)
+\label{sec:tails_and_horizontal_asymptotes}
+\begin{frame}[t]{Tail}
+	\begin{block}
+		{Tails of Polinomial}
+		Only two cases: diverge to $\pm\infty$
+	\end{block}
+	\begin{block}
+		{Tails of Rational Function}
+		\[
+			g(x) = \frac{\bar a_0 x^{\bar k} + \bar a_1 x^{\bar k-1} + \cdots + \bar a_{\bar k}}{\bar b_0 x^{\bar m} + \cdots +\bar b_{\bar m}}
+		\]
+		Tails of $g(x)$ is determined by $\frac{\bar a_0}{\bar b_0}\frac{x^{\bar k}}{x^{\bar m}}$
+		\begin{itemize}
+			\item $k>m$: Same as polynomias with degree $k-m$
+			\item $k=m$: Converges to $\frac{a_0}{b_0}$ (Horizontal asymptote)
+			\item $k<m$: converges to $0$ (Horizontal asymptote)
+		\end{itemize}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section tails_and_horizontal_asymptotes (end)
+
+\section{Maxima and Minima} % (fold)
+\label{sec:maxima_and_minima}
+\begin{frame}[t]{Boundary Max and Interior Max}
+	\begin{thm}
+		[3.3: First Order Condition (FOC)]
+		$x_0$ is an interior max or min of $f$ $\Rightarrow$ $x_0$ is a critical point of $f$. $i.e.,$ $f^\prime(x_0)=0$
+		(Inverse is not always true)
+	\end{thm}
+	
+	\begin{thm}
+		[3.4: Second Order Condition (SOC)]
+		\begin{enumerate}
+			\item $f^\prime(x_0)=0 \land f^{\prime\prime}(x_0)<0 \Rightarrow x_0$ is local max of $f$
+			\item $f^\prime(x_0)=0 \land f^{\prime\prime}(x_0)>0 \Rightarrow x_0$ is local min of $f$
+			\item $f^\prime(x_0)=0 \land f^{\prime\prime}(x_0)=0 \Rightarrow x_0$ can be max, min, or neither
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Global Maxima and Minima}
+	\begin{itemize}
+		\item Finding global max (or min) is not easy problem
+		\item These cases guarantee the existence of global max (or min)
+		\begin{itemize}
+			\item Domain of $f$ is an interval $\land$ $f$ has only one critical point
+			\item $f^{\prime\prime}>0$ $\lor$ $f^{\prime\prime}<0$ in domain of $f$
+			\item Domain of $f$ is compact (closed and bounded)    ($\exists$ global max, global min)
+		\end{itemize}
+		\item Below case guarantees the nonexistence of global max (or min)
+		\begin{itemize}
+			\item Strictly increasing (or decreasing) functions with open domain
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+% section maxima_and_minima (end)
+
+\section{Applications to Economics} % (fold)
+\label{sec:applications_to_economics}
+\begin{frame}[t]{Producer's Problem in Perfect Competative Market}
+	
+	\begin{block}
+		{Producer's Problem in perfect competative market}
+		\[
+			\arg\max_x \Pi(x)
+		\]
+	\end{block}
+	\[
+		x=f(L) \tag{Production Function}
+	\]
+	\begin{block}
+		{Exogenous (Given) variables}
+		\begin{itemize}
+			\item $\bar w$: unit price of labor
+			\item $\bar p$: unit price of end product
+		\end{itemize}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Assumptions}
+	\begin{block}
+		{Assumptions}
+		\begin{itemize}
+			\item $f:D\rightarrow\mathbb{R}\in \mathbf{C}^2$
+			\item $f$ is increasing: $f^\prime(L) >0 \forall L\in D$
+			\item $\exists \bar a\ge 0$ s.t. (1) $f^{\prime\prime}(L)>0 \forall L\in[0,\bar a)$ ($i.e.,$ convex on $[0,\bar a)$) and (2) $f^{\prime\prime}(L)<0 \forall L\in(\bar a,\infty]$ ($i.e.,$ concave on $(\bar a,\infty)$)
+			\item Quantity of input (labor) $L$ is the only factor for production
+		\end{itemize}
+	\end{block}
+
+\end{frame}
+%--- Next Frame ---%
+
+
+\begin{frame}[t]{Cost Functions}
+	\begin{block}
+		{Big Picture for problem solving}
+		Production Function $\rightarrow$ Cost Function (in terms of $x$) $\rightarrow$ Profit Function $\Pi(x)$ $\rightarrow$ Finding $x^\ast$ maximizing $\Pi(x)$
+	\end{block}
+	
+	\begin{defn}
+		[Total Cost, Marginal Cost, and Average Cost]
+		\begin{itemize}
+			\item $TC(x)$: Total cost for producing $x$
+			\item $MC(x):= TC^\prime(x)$
+			\item $AC(x):= \frac{TC(x)}{x}$
+		\end{itemize}
+	\end{defn}
+	
+	\begin{thm}
+		[3.7c]
+		At interior minimum of AC ($i.e.,AC^\prime=0$ ), $AC=MC$
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Revenue and Profic Functions}
+	\begin{defn}
+		[Total Revenue, Marginal Revenue]
+		\[
+			TR(x) := \bar p x
+		\]
+		\[
+			MR(x) := TR^\prime (x)
+		\]
+	\end{defn}
+	\begin{defn}
+		[Profit Function]
+		\[
+			\Pi(x) := TR-TC
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Producer's problem in Monopoly Case}
+	In monopoly, $p$ is endogenous
+	\begin{block}
+		{Producer's Problem in Monopoly}
+		\[
+			\arg\max_{p,x} \Pi(x)
+		\]
+	\end{block}
+	However, firm is facing demand directly in monopoly
+	\[
+		x=D(p) \tag{Demand Function}
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Elasticity}
+	\begin{defn}
+		[A Elasticity of B]
+		\[
+			\epsilon_{B,A} := \frac{\frac{d B}{B}}{\frac{d A}{A}} = \frac{A}{B}\frac{dB}{dA}
+		\]
+	\end{defn}
+	\begin{itemize}
+		\item $\frac{\Delta x}{x}$: rate of change
+		\item Elasticity: ratio of rate of change
+		\begin{itemize}
+			\item $|\epsilon|<1$: inelastic
+			\item $|\epsilon|>1$: elastic
+			\item $|\epsilon|=1$: unit elastic
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Functions with Constant Demand}
+	\begin{itemize}
+		\item Elasticity of linear demand function is not constant (not realistic)
+		\[
+			x=D(p)=\bar a - \bar b p,\quad \bar a,\bar b >0
+		\]
+		\item Example of constant elasticity demand function (more realistic)
+		\[
+			x=D(p)=\bar k p^{-\bar r},\quad \bar k, \bar r >0
+		\]
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+% section applications_to_economics (end)
+\end{document}

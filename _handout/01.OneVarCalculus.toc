@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Functions on $\mathbb {R}$}{3}{0}{1}
+\beamer@sectionintoc {2}{Linear Functions}{7}{0}{2}
+\beamer@sectionintoc {3}{The Slope of Nonlinear Functions}{8}{0}{3}
+\beamer@sectionintoc {4}{Computing Derivatives}{9}{0}{4}
+\beamer@sectionintoc {5}{Differentiablilty and Continuity}{12}{0}{5}
+\beamer@sectionintoc {6}{Higher-order Derivatives}{14}{0}{6}
+\beamer@sectionintoc {7}{Approximation by Differentials}{15}{0}{7}
