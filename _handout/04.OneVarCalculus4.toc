@@ -1,7 +1,0 @@
-\beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{Exponential Functions}{3}{0}{1}
-\beamer@sectionintoc {2}{The Number $e$}{4}{0}{2}
-\beamer@sectionintoc {3}{Logarithms}{6}{0}{3}
-\beamer@sectionintoc {4}{Properties of Exp and Log}{8}{0}{4}
-\beamer@sectionintoc {5}{Derivatives of Exp and Log}{10}{0}{5}
-\beamer@sectionintoc {6}{Applications}{11}{0}{6}

@@ -1,7 +1,0 @@
-\beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{Using the First Derivatives for Graphing}{3}{0}{1}
-\beamer@sectionintoc {2}{Second Derivatives and Convexity}{5}{0}{2}
-\beamer@sectionintoc {3}{Graphing Rational Functions}{7}{0}{3}
-\beamer@sectionintoc {4}{Tails and Horizontal Asymptotes}{8}{0}{4}
-\beamer@sectionintoc {5}{Maxima and Minima}{9}{0}{5}
-\beamer@sectionintoc {6}{Applications to Economics}{11}{0}{6}
