@@ -1,0 +1,373 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage[hangul]{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\author[조남운]{\url{econMath.namun+2016sp@gmail.com}}
+\title{Systems of Linear Equations}
+\subtitle{CH7}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Gaussian and Gauss-Jordan Elimination} % (fold)
+\label{sec:gaussian_and_gauss_jordan_elimination}
+\begin{frame}[t]{General Linear System}
+	\begin{block}
+		{General Linear System}
+		\begin{align*}
+			\bar a_{11} x_1 + \bar a_{12}x_2 + \cdots + \bar a_{1n}x_n &= \bar b_1\\
+			\bar a_{21} x_1 + \bar a_{22}x_2 + \cdots + \bar a_{2n}x_n &= \bar b_2\\
+			\vdots\\
+			\bar a_{m1} x_1 + \bar a_{m2}x_2 + \cdots + \bar a_{mn}x_n &= \bar b_m
+		\end{align*}
+		More elegantly, 
+		\[
+			\bar{A}\mathbf{x} = \bar{\mathbf{b}}
+		\]
+		(Compare with one-var version: $\bar a x = \bar b$)
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Solution of Linear System: $\mathbf{x}=(x_1,x_2,\cdots,x_n)$}
+	\begin{itemize}
+		\item Solution of linear system is $\mathbf{x}=(x_1,x_2,\cdots,x_n)$ satisfies all equations in equation system
+		\item Main considerations:
+		\begin{itemize}
+			\item Existance of Solution
+			\item \# of Solutions
+			\item Efficient deriving methods
+			\begin{itemize}
+				\item Substitution
+				\item Elimination of variables
+				\item Matrix methods
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+% section gaussian_and_gauss_jordan_elimination (end)
+\section{Elementary Row Operations (EROs)} % (fold)
+\label{sec:elementary_row_operations_eros}
+\begin{frame}[t]{Elementary Row Operations (EROs)}
+	\begin{block}
+		{Solving Procedure: Big Picture}
+		\[
+			(A\vert \mathbf{b}) \xrightarrow{EROs} (A_{REF}\vert \mathbf{b}^\ast) \xrightarrow{EROs} (A_{RREF}\vert \mathbf{b}^{\ast\ast}) \xrightarrow{EROs} (I|\mathbf{b}^{\ast\ast\ast})
+		\]
+		Solution: $\mathbf{x} = \mathbf{b}^{\ast\ast\ast}$
+	\end{block}
+	\begin{block}
+		{General linear system} We should solve 
+		\begin{align*}
+			\bar a_{11} x_1 + \bar a_{12}x_2 + \cdots + \bar a_{1n}x_n &= \bar b_1\\
+			\bar a_{21} x_1 + \bar a_{22}x_2 + \cdots + \bar a_{2n}x_n &= \bar b_2\\
+			\vdots\\
+			\bar a_{m1} x_1 + \bar a_{m2}x_2 + \cdots + \bar a_{mn}x_n &= \bar b_m
+		\end{align*}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Coefficient Matrix, Augment Matrix}
+	\begin{defn}
+		[Coefficient Matrix]
+		$A$ is a \uline{coefficient matrix} for general linear system
+		\[
+			A := \begin{pmatrix}
+				a_{11}&a_{12}&\cdots& a_{1n}\\
+				a_{21}&a_{22}&\cdots& a_{2n}\\
+				\vdots&\vdots&&\vdots\\
+				a_{mn}&a_{m2}&\cdots& a_{mn}
+			\end{pmatrix}
+		\]
+	\end{defn}
+	\begin{defn}
+		[Augment Matrix]
+		$\hat A$ is a \uline{augment matrix} for general linear system
+		\[
+			\hat A := (A\vert \mathbf{b}) 
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Elementary Row Operations (EROs)}
+	\begin{defn}
+		Let $R_i$ be the $i$th row matrix of $A$, then, 
+		\begin{align*}
+			R_i &\leftrightarrow R_j \tag{$ERO_1(i,j)$}\\
+			R_i &\leftarrow \bar k R_j + R_i \tag{$ERO_2(k,j,i)$}\\
+			R_i &\leftarrow \bar k R_i \tag{$ERO_3(k,i)$}
+		\end{align*}
+		Above operations do not change solution
+	\end{defn}
+	\begin{itemize}
+		\item Notations
+		\begin{itemize}
+			\item $R_i$: $i$th row (of $A$)
+			\item $C_i$: $i$th column (of $A$)
+			\item $a_{ij}$: Element of $i$th row, $j$th column (of $A$)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Row Echelon Form}
+	\begin{defn}
+		[$k$-leading zeros, pivot, Row Echelon Form (REF)]
+		$R_i$ has \uline{$k$-leading zeros} if:
+		\[
+			a_{ij}=\begin{cases}
+				0,&\forall j\le k\\
+				\text{not } 0,& j=k+1
+			\end{cases}
+		\]
+		Above $a_{i,k+1}$ is a \uline{pivot} of $R_i$ 
+		
+		Let $k_i$ be \# of leading zeros of $R_i$. Then $\hat A_{REF}$ is \uline{row echelon form} (REF) of $\hat A$ if:
+		\begin{itemize}
+			\item $k_i > k_j \quad\forall i>j$
+			\item Zero rows are placed on the bottom of $A$
+		\end{itemize}
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Reduced Row Echelon Form (RREF)}
+	\begin{defn}
+		[Reduced Row Echelon Form (RREF)]
+		$A_{RREF}$ is a reduced row echelon form (RREF) of $A$ if:
+		\begin{itemize}
+			\item $A_{RREF}$ is REF
+			\item If $C_i$ has pivot, only pivot is non-zero element in $C_i$
+			\item Pivot = 1
+		\end{itemize}
+	\end{defn}
+	\begin{block}
+		{Solving Procedure: Gauss-Jordan Elimination}
+		\[
+			(A\vert \mathbf{b}) \xrightarrow{EROs} (A_{REF}\vert \mathbf{b}^\ast) \xrightarrow{EROs} (A_{RREF}\vert \mathbf{b}^{\ast\ast}) \xrightarrow{EROs} (I|\mathbf{b}^{\ast\ast\ast})
+		\]
+		Solution: If the liear system $Ax=\mathbf{b}$ has an unique solution ($A$ is $m\times n$ matrix), $A_{RREF}=I$ ($m=n$) or, $R_i = I_i$ ($i\le n$) and $R_i = \mathbf{O} $ ($i>n$)
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section elementary_row_operations_eros (end)
+\section{Systems with Many or No Solutions} % (fold)
+\label{sec:systems_with_many_or_no_solutions}
+\subsection{Systems with No Solution} % (fold)
+\label{sub:systems_with_no_solution}
+\begin{frame}[t]{Systems with No Solution}
+	During EROs for $\hat A = A\vert \mathbf{b}$, if you encounter with $ \mathbf{O}\vert k\neq 0$ , $i.e.,$ $(0 0 0\cdots 0\vert k\neq 0)$, this system has \uline{no solution} 
+	
+	Meaning: \[
+		0 x_1 + 0 x_2 + \cdots + 0 x_n = 0 = k \neq 0 \tag{contradiction!}
+	\]
+	No $\mathbf{x}$ can satisfy this equation
+	\begin{thm}
+		[Fact7.2]
+		$\hat A$ has a solution iff \[
+			rank \hat A = rank A
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% subsection systems_with_no_solution (end)
+\subsection{Systems with Many Solutions} % (fold)
+\label{sub:systems_with_many_solutions}
+\begin{frame}[t]{Systems with Many Solutions}
+	Here, $w$ stands for \uline{independent} zero or non-zero element (can have any values) and $\ast$ is nonzero pivot.
+	
+	\begin{block}
+		{REF of systems with many solutions}
+		Systems with many solutions have following form of RREF (blank means zero)
+		\[
+			\tag{REF} \begin{pmatrix} 
+				\ast & w& w& w& w& w& w& w& \vert&w\\
+				&&&\ast&w& w& w& w& \vert&w\\
+				&&&&&\ast&w& w& \vert&w\\
+				&&&&&&\ast&w& \vert&w\\
+				&&&&&&&\ast&\vert&w
+			\end{pmatrix}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{RREF of Systems with many solutions}
+	Important note: This is just an example of systems with many solutions. 
+	\begin{block}
+		{RREF of systems with many solutions}
+		Systems with many solutions have following form of RREF (blank means zero)
+		\[
+			\tag{RREF} \begin{pmatrix} 
+				1 & w& w& 0& w& 0& 0& 0& \vert&w\\
+				&&&1&w& 0& 0& 0& \vert&w\\
+				&&&&&1&0& 0& \vert&w\\
+				&&&&&&1&0& \vert&w\\
+				&&&&&&&1&\vert&w
+			\end{pmatrix}
+		\]
+	\end{block}
+In systems with many solutions, there exist $C_i$ with no pivot (in our example, $C_2,C_3,C_5$)
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Solutions of linear systems with many solutions}
+	\begin{itemize}
+		\item Two types of solutions
+		\begin{enumerate}
+			\item \uline{Basic variables} are dependent on free variables or, fixed value:
+			\begin{itemize}
+				\item Dependent on free variables: $x_1,x_4$ (in our example)
+				\item Fixed value: $x_6,x_7,x_8$ (in our example)
+			\end{itemize}
+			\item \uline{Free variables} can have any value: $x_2,x_3,x_5$ (in our example)
+			\begin{itemize}
+				\item If $C_i$ has no pivot, $x_i$ is free variable
+			\end{itemize}
+		\end{enumerate}
+		\item In solving systems with many solutions, above types should be addressed explicitly
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+% subsection systems_with_many_solutions (end)
+% section systems_with_many_or_no_solutions (end)
+\section{Rank - The Fundamental Criterion} % (fold)
+\label{sec:rank_the_fundamental_criterion}
+\begin{frame}[t]{Rank}
+	\begin{defn}
+		[Rank] The \uline{Rank} of a matrix is \# of the nonzero rows in its REF (or RREF)
+	\end{defn}
+	\begin{block}
+		{Property of Rank}
+		Rank = \# of pivots = \# of nonzero rows of REF (or RREF)
+	\end{block}
+	\begin{itemize}
+		\item Implication: Rank means the number of effective (meaningful) equations
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+\begin{thm}
+	[Fact7.11] A system of $m$ equations and $n$ unknowns (its coefficient matrix is $m\times n$ matrix)\[
+		A\mathbf{x} = \mathbf{b}
+	\]		
+	\begin{center}
+		\begin{scriptsize}
+			\begin{tabular}{l|l}
+				 $m<n$& \# of solutions\\
+				 \hline
+				 $\mathbf{b}=\mathbf{0}$& $\infty$\\
+				 $\forall \mathbf{b}$& $0\lor \infty$\\
+				 $rank A = m$ & $\infty (\forall \mathbf{b})$\\
+				 \hline\hline
+				 $m>n$&\\
+				 \hline
+				 $\mathbf{b}=\mathbf{0}$& $1\lor \infty$\\
+				 $\forall \mathbf{b}$& $0\lor 1\lor \infty$\\
+				 $rank A = n$ & $0\lor 1 (\forall \mathbf{b})$\\
+				 \hline\hline
+				 $m=n$&\\
+				 \hline
+				 $\mathbf{b}=\mathbf{0}$& $1\lor \infty$\\
+				 $\forall \mathbf{b}$& $0\lor 1\lor \infty$\\
+				 $rank A = n=m$ & $ 1 (\forall \mathbf{b})$\\
+			\end{tabular}
+		\end{scriptsize}
+		
+	\end{center}
+\end{thm}
+% section rank_the_fundamental_criterion (end)
+\section{The Linear Implicit Function Theorem} % (fold)
+\label{sec:the_linear_implicit_function_theorem}
+\begin{frame}[t]{Example: IS-LM model}
+	\begin{block}
+		{IS-LM Model}
+		\begin{align*}
+			sY + ar &= I^0 + G \tag{IS}\\
+			mY - hr &= M_s + M^0 \tag{LM} 
+		\end{align*}
+	\end{block}
+	\begin{itemize}
+		\item Endogenous variables: $Y,r$
+		\item Exogenous parameters: $s,a,m,h,I^0,G,M_s,M^0$
+		\begin{itemize}
+			\item Policy variables: $G,M_s$
+			\item Behavioral variables: $s,a,m,h,I^0,M^0$
+		\end{itemize}
+		\item Coefficient matrix:
+		\[
+			A=\begin{pmatrix}
+				s&a\\m&-h
+			\end{pmatrix}
+		\]
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Linear Implicit Function Theorem}
+	\begin{thm}
+		[Linear Implicit Function Theorem]
+		A general linear model with $m$ equations and $n$ knowns can have an unique solution (and suppose $x_i$ are arranged by endogeneity) iff:
+		\begin{itemize}
+			\item $x_1,\cdots,x_k$ are endogenous variables
+			\item $x_{k+1},\cdots, x_n$ are exogenous variables ($i.e.$, constant in this system)
+			\item $k=m$
+			\item $rank A = k$
+		\end{itemize}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Linear IFT}
+	Implication of Linear IFT: treat exogenous variables as constant. 
+	\begin{align*}
+		\bar a_{11} x_1 + \bar a_{12}x_2 + \cdots + \bar a_{1n}x_n &= \bar b_1\\
+		\vdots\\
+		\bar a_{m1} x_1 + \bar a_{m2}x_2 + \cdots + \bar a_{mn}x_n &= \bar b_m
+	\end{align*}
+	Above system can be solvable iff $rank \tilde{A} = k = m$
+	\[
+		\tilde{A}\mathbf{x} = \tilde{\mathbf{b}}
+	\]
+	\[
+		\tilde{A}:= \begin{pmatrix}
+			a_{11}&a_{12}&\cdots&a_{1k}\\
+			a_{21}&a_{22}&\cdots&a_{2k}\\
+			\vdots&\vdots&&\vdots\\
+			a_{k1}&a_{k2}&\cdots&a_{kk}
+		\end{pmatrix}, \tilde{\mathbf{b}}=\begin{pmatrix}
+			b_1 - a_{1,k+1}x_{k+1} - \cdots - a_{1n}x_n\\
+			b_2 - a_{2,k+1}x_{k+1} - \cdots - a_{2n}x_n\\
+			\vdots\\
+			b_k - a_{k,k+1}x_{k+1} - \cdots - a_{kn}x_n
+		\end{pmatrix}
+	\]
+\end{frame}
+%--- Next Frame ---%
+% section the_linear_implicit_function_theorem (end)
+\end{document}

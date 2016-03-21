@@ -1,0 +1,144 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage[hangul]{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\author[조남운]{\url{econMath.namun+2016sp@gmail.com}}
+\title{Linear Algebra}
+\subtitle{CH6}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Linear Systems} % (fold)
+\label{sec:linear_systems}
+\begin{frame}[t]{General Linear Equation}
+	\begin{block}
+		{General Linear Equation (multi variable)}
+		\[
+			\sum_{i=1}^n \bar a_i x_i = \bar a_1 x_1 + \bar a_2 x_2 + \cdots + \bar a_n x_n = \bar b
+		\]
+		More elegantly,
+		\[
+			\bar{\mathbf{a}}\cdot \mathbf{x} = \bar b ,\quad \bar{\mathbf{a}}=(\bar a_1 ,\cdots,\bar a_n), \mathbf{x}=(x_1,\cdots,x_n)
+		\]
+		Note: General Linear Equation (one variable) is:
+		\[
+			\bar a x = \bar b
+		\]
+	\end{block}
+	\begin{itemize}
+		\item $\bar a_i, \bar b$: parameters (given)
+		\item $x_i$: variables
+		\item Importance of linearity: Linear approximation
+	\end{itemize}
+\end{frame}
+
+%--- Next Frame ---%
+% section linear_systems (end)
+
+\section{Examples of Linear Models} % (fold)
+\label{sec:examples_of_linear_models}
+\subsection{Markov Models of Unemployment} % (fold)
+\label{sub:markov_models_of_unemployment}
+\begin{frame}[t]{Ex3.Markov Models of Unemployment}
+	\begin{block}
+		{Main Concept and Assumptions}
+		\begin{itemize}
+			\item Binary state: employed ($E$) or unemployed ($U$)
+			\item Four possible events with \uline{constant} probability: 
+			\begin{itemize}
+				\item $\Pr(E\rightarrow E)=\bar q$
+				\item $\Pr(E\rightarrow U)=1-\bar q$
+				\item $\Pr(U\rightarrow E)=\bar p$
+				\item $\Pr(U\rightarrow U)=1-\bar p$
+			\end{itemize}
+			\item Markov process: Stochastic, memoryless process
+			\item $x_t$: ratio of employed workers
+			\item $y_t$: ratio of unemployed workers
+		\end{itemize}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Steady state of unemployment rate $y^\ast$}
+	\begin{block}
+		{Main Question}
+		\begin{itemize}
+			\item Existance of steady state s.t., 
+			\[
+				x_{t+1} \approx x_t = x^\ast,\quad y_{t+1} \approx y_t=y^\ast \quad \forall t>\bar T
+			\]
+			\item Stability of above steady state (--> need dynamic analysis: PASS)
+		\end{itemize}
+	\end{block}
+	\begin{itemize}
+		\item Hall (1966)'s estimation (by Races, male only)
+		\begin{itemize}
+			\item $p_{W}\approx 0.136$, $q_{W}\approx 0.998$
+			\item $p_{B}\approx 0.102$, $q_{B}\approx 0.996$
+		\end{itemize}
+		\[
+			y_{W}^\ast \approx 0.014 < \quad y_{B}^\ast \approx 0.037
+		\]
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+% subsection markov_models_of_unemployment (end)
+\subsection{IS-LM (Linear version)} % (fold)
+\label{sub:is_lm_linear_version}
+\begin{frame}[t]{Model}
+	\begin{itemize}
+		\item Hicks's interpretation of Keynes (1936)
+	\end{itemize}
+	\[
+		Y=C+I+G \tag{IS Schedule: Real side}
+	\]
+	\begin{itemize}
+		\item $C=\bar b Y, \quad \bar b \in (0,1)$
+		\item $S=Y-C=(1-\bar b Y)=\bar s Y$
+		\item $I=\bar I^0-\bar a r$
+	\end{itemize}
+	\[
+		\bar M_s = M_{dt}+M_{ds} = \underbrace{\bar m Y}_{M_{dt}} + \underbrace{\bar M^0 - \bar h r}_{M_{ds}} \tag{LM Schedule: Monetary side}
+	\]
+	\begin{itemize}
+		\item Endogenous variables: $r,Y$
+		\item Exogenous variables (given parameters): $M_s, G, a, h, I^0, M^0, m$
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+% subsection is_lm_linear_version (end)
+% section examples_of_linear_models (end)
+	
+\end{document}
