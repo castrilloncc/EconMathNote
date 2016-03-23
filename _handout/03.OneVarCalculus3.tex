@@ -55,14 +55,12 @@
 	In general, $h\circ g \neq g \circ h$
 	\begin{block}
 		{Chain Rule}
-		% Suppose $f = (f_1 \circ f_2 \circ \cdots \circ f_n)(x)=f_1(f_2(\cdots(f_n(x))))$. then,
+		Suppose $\hat f_i = (f_i \circ f_{i+1} \circ \cdots \circ f_n)(x)=f_i(f_{i+1}(\cdots(f_n(x))))$. then,
 		\[
-			\frac{d(f_1 \circ f_2 \circ \cdots \circ f_n)(x)}{dx}=\frac{df_1(f_2(\cdots(f_n(x))))}{dx}= \frac{df_1}{df_2}\frac{df_2}{df_3}\cdots\frac{df_n}{dx}
+			\frac{d( f_1 \circ f_2 \circ \cdots \circ f_n)(x)}{dx}=\frac{df_1(f_2(\cdots(f_n(x))))}{dx}= \frac{d\hat f_1}{d\hat f_2}\frac{d\hat f_2}{d\hat f_3}\cdots\frac{d\hat f_n}{dx}
 		\]
 	\end{block}
-	\[
-		[\cos((\sin(x^3+4x))^{500})]^\prime =?
-	\]
+		Exercise: $[\cos((\sin(x^3+4x))^{500})]^\prime =?$
 \end{frame}
 %--- Next Frame ---%
 
