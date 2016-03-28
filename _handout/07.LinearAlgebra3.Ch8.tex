@@ -1,0 +1,353 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage[hangul]{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\author[조남운]{\url{econMath.namun+2016sp@gmail.com}}
+\title{Matrix Algebra}
+\subtitle{Ch.8}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Matrix Algebra} % (fold)
+\label{sec:matrix_algebra}
+\begin{frame}[t]{Matrix}
+	\begin{defn}
+		[Matrix]
+		Matrix is a rectangular array of numbers (scalars)
+	\end{defn}
+	
+	Let $a_{ij}\in \mathbb{R}$ or $A_{ij}\in\mathbb{R}$ be the $i$th row and $j$th column element of matrix $A$
+	
+	\begin{defn}
+		[Equal]
+		\[
+			A=B\quad \iff \begin{cases}
+				\text{same size}\\
+				a_{ij}=b_{ij} \quad \forall i,j
+			\end{cases}
+		\]
+	\end{defn}
+	
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Addition, Subtraction}
+	Let $A,B$ be $n\times k$ matrices and $r\in \mathbb{R}$
+	\begin{defn}
+		[Addition]
+		\[
+			(A+B)_{ij} := a_{ij}+b_{ij}\quad\forall i,j
+		\]
+	\end{defn}
+	Important note: the first $+$ and the second $+$ are not same operators
+	
+	\begin{defn}
+		[Subtraction]
+		\[
+			(A-B)_{ij} := a_{ij}-b_{ij}\quad\forall i,j
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Multiplications of Matrices}
+	\begin{defn}
+		[Scalar Multiplication]
+		\[
+			(rA)_{ij} := r A_{ij}\quad\forall i,j
+		\]
+	\end{defn}
+	Let $A$ be $n\times k$ matrix and $B$ be $k\times m$ matrix. Then $AB$ is $n\times m$ matrix.
+	\begin{defn}
+		[Matrix Multiplication]
+		\[
+			(AB)_{ij}:=A_{i1}B_{1j}+A_{i2}B_{2j}+\cdots+A_{ik}B_{kj}= \sum_{r=1}^k A_{ir}B_{rj}
+		\]
+	\end{defn}
+	For $n\times n$ matrices, identity matrix $I_n$ is a multiplicative identity. 
+	\[
+		AI = IA = A
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Laws of Matrix Algebra}
+	\begin{block}
+		{Laws of Matrix Algebra}
+		\begin{align*}
+				(A+B)+C &= A+(B+C) \tag{Associative Law for Addition}\\
+				(AB)C&=A(BC)\tag{Associative Law for Multiplication}\\
+				A+B &= B+A \tag{Commutative Law for Addition}\\
+				A(B+C)&=AB+AC \tag{Distributive Law}\\
+				(A+B)C&=AC+BC \tag{Distributive Law}
+		\end{align*}
+	\end{block}
+	Important Note: $AB\neq BA$
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Transpose}
+	\begin{defn}
+		[Transpose]
+		$A^T$ ($n\times m$) is a transpose of $A$ ($m\times n$) if: \[
+			(A^T)_{ij} := A_{ji}\quad \forall i,j
+		\]
+	\end{defn}
+	\begin{align*}
+		(A\pm B)^T &= A^T + B^T\\
+		(A^T)^T &= A\\
+		(rA)^T &= r A^T\\
+		(AB)^T &= B^T A^T \tag{Theorem 8.1}
+	\end{align*}
+\end{frame}
+%--- Next Frame ---%
+% section matrix_algebra (end)
+
+\section{Special Kinds of Matrices} % (fold)
+\label{sec:special_kinds_of_matrices}
+\begin{frame}[t]{Special Kinds of Matrices (1)}
+	Suppose $A$ is $k\times n$ matrix. Then,
+	\begin{defn}
+		[Special Kinds of Matrices (1)]
+		\begin{itemize}
+			\item $A$ is a \uline{square matrix} if $k=n$
+			\item $A$ is a \uline{column matrix} if $n=1$
+			\item $A$ is a \uline{row matrix} if $k=1$
+			\item $A$ is a \uline{diagonal matrix} if $k=n$ and $a_{ij}=1\quad \forall i\neq j$
+			\item $A$ is a \uline{scalar matrix} if $A=tI_n$
+			\item $A$ is an \uline{upper-triangular matrix} if $a_{ij}=0\quad\forall i>j$
+			\item $A$ is a \uline{lower-triangular matrix} if $a_{ij}=0\quad\forall i<j$
+		\end{itemize}
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Special Kinds of Matrices (2)}
+	\begin{defn}
+		[Special Kinds of Matrices (2)]
+		\begin{itemize}
+			\item $A$ is a \uline{symmetric matrix} if $A$ is suqare matrix and $a_{ij}=a_{ji}\quad\forall i,j$. Or, $A^T = A$
+			\item $A$ is an \uline{Idempotent matrix} if $AA=A$
+			\item $A$ is a \uline{permutation matrix} if $A$ is the result of $I_n$ with $ERO_1$ (row exchange)
+			\item $A$ is a \uline{nonsingular matrix} if $rank A = \# row = \# column$
+		\end{itemize}
+	\end{defn}
+	If a coefficient matrix of a system of linear equations is \uline{nonsignular}, this system has only one solution $\mathbf{x} = A^{-1}\mathbf{b}$
+\end{frame}
+%--- Next Frame ---%
+% section special_kinds_of_matrices (end)
+
+\section{Elementary Matrices} % (fold)
+\label{sec:elementary_matrices}
+\begin{frame}[t]{Elementary Matrix}
+	Let $E$ be an elementary matrix of some $ERO$s. Then, 
+	\begin{thm}
+		[8.3] $ERO$ with a matrix A is equivalent to $EA$
+	\end{thm}
+	\begin{thm}
+		[8.2] \begin{itemize}
+			\item Let $E1_{ij}$ be the permutation matrix with interchanging $R_i$ and $R_j$ of $I_n$, then $E1_{ij}$ is equivalent to $ERO_1(i,j)$
+			\item Let $E2_{k,j,i}$ be the result of $ERO_2(k,j,i)$ from $I_n$, then $E2_{k,j,i}$ is equivalent to $ERO_2(k,j,i)$
+			\item Let $E3_{k,i}$ be the result of $ERO_3(k,i)$ from $I_n$, then $E3_{k,i}$ is equivalent to $ERO_3(k,i)$
+		\end{itemize}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Elementary Matrix}
+	\begin{defn}
+		[Elementary Matrix]
+		$E1,E2,E3$ are \uline{elementary matrices} corresponding to their $ERO$s
+	\end{defn}
+	\begin{thm}
+		[8.4] Let $A\in M_n$ (set of $n\times n$ matrices), $E_i\in EM$ (set of elementary matrices), and $(R)REFM$ be the set of (R)REF matrices. Then: \[
+			\exists E_i\quad i=1,2,\cdots,m\quad s.t.\quad \prod_{i=m}^1E_i A \in (R)REFM
+		\] or \[
+			E_m E_{m-1}\cdots E_2E_1 A \in (R)REFM
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section elementary_matrices (end)
+
+\section{Algebra of Square Matrices} % (fold)
+\label{sec:algebra_of_square_matrices}
+\begin{frame}[t]{Inverse of Matrices}
+	Suppose $A,B\in M_n$
+	\begin{defn}
+		[Inverse, Invertible]
+		$B$ is (left, or right) \uline{inverse} for $A$ if:\[
+			\underbrace{AB}_{\text{$B$: Right inverse}}=\overbrace{BA}^{\text{$B$: Left inverse}}=I
+		\]
+		$A$ is \uline{invertible} if $\exists B$
+	\end{defn}
+	Notation: $B=A^{-1}$
+	\begin{thm}
+		[8.5:Uniquenes of Inverse]
+		$A\in M_n$ can have \uline{at most} one inverse. (left inverse = right inverse)
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Inverse Matrices and the Solution of Linear Systems}
+	\begin{thm}
+		[8.6] For $A\in M_n$,
+		\[
+			\exists A^{-1} \quad\Rightarrow\quad \begin{cases}
+				A \text{ is nonsingular}\\
+				\text{Unique solution of } A\mathbf{x}=\mathbf{b} \quad\Rightarrow\quad \mathbf{x}=A^{-1}\mathbf{b}
+			\end{cases}
+		\]
+	\end{thm}
+	Proof: easy
+	\begin{thm}
+		[8.7: inverse of Th8.6] \[
+			A\in M_n \text{ is nonsignualr} \quad\Rightarrow\quad \exists A^{-1}
+		\]
+	\end{thm}
+	Proof: difficult
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Calculation of Inverse Matrix}
+	\begin{block}
+		{Calculation of Inverse Matrix}
+		\[
+			[A\vert I] \xrightarrow{EROs} [I\vert A^{-1}]
+		\]
+	\end{block}
+	If RREF is not $I_n$, $\nexists A^{-1}$
+	\begin{thm}
+		[8.8] Let $A=\begin{pmatrix}
+			a&b\\c&d
+		\end{pmatrix} \in M_2$. $A$ is nonsingular iff $ad-bc\neq 0$
+	\end{thm}
+	For general case ($A\in M_n$), see Ch.9
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Equivalent statements}
+	\begin{thm}
+		[8.9] For $A\in M_n$, the following statements are equivalent
+		\begin{enumerate}
+			\item $\exists A^{-1}$
+			\item $A$ has right inverse
+			\item $A$ has left inverse
+			\item $A\mathbf{x}=\mathbf{b}$ has at least one solution for every $\mathbf{b}$
+			\item $A\mathbf{x}=\mathbf{b}$ has at most one solution for every $\mathbf{b}$
+			\item $A$ is nonsingular
+			\item $rank A = n$
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Properties of Inverse Matrices and Exponention}
+	\begin{thm}
+		[8.10] If $A,B\in M_n$ and $\exists A^{-1}, B^{-1}$,
+		\begin{enumerate}
+			\item $(A^{-1})^{-1}=A$
+			\item $(A^T)^{-1}=(A^{-1})^T$
+			\item $\exists(AB)^{-1} \land (AB)^{-1}=B^{-1}A^{-1}$
+		\end{enumerate}
+	\end{thm}
+	\begin{defn}
+		[Exponention of Matrices]
+		\[
+			A^m := \prod_{i=1}^m A
+		\]\[
+			A^{-m} := (A^{-1})^m
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Expoenetial Properties of Invertible Matrices}
+	\begin{thm}
+		[8.11] \[
+			\exists A^{-1} \quad\Rightarrow\quad \begin{cases}
+				\exists A^{-m} \quad\forall m\in\mathbb{N}\\
+				A^rA^s = A^{r+s}\quad\forall r,s\in\mathbb{N}\\
+				\forall r\in\mathbb{R}-\{0\}, \quad \exists(rA)^{-1}\land (rA)^{-1}=\frac{1}{r}A^{-1}
+			\end{cases}
+		\]
+	\end{thm}
+	Important Note: $(AB)^k\neq A^k B^k$
+\end{frame}
+%--- Next Frame ---%
+% section algebra_of_square_matrices (end)
+
+% \section{Input-Output Matrices} % (fold)
+% \label{sec:input_output_matrices}
+%
+% % section input_output_matrices (end)
+
+\section{Partitioned Matrices} % (fold)
+\label{sec:partitioned_matrices}
+\begin{frame}[t]{Partitioned Matrices}
+	Somtimes, matrix of matrices can be more convinent.
+	\begin{defn}
+		[Submatrix, Partitioned matrix]
+		\begin{itemize}
+			\item A \uline{submatrix} of matrix $A$ is a matrix obtained by deleting some $R_i$ or $C_j$
+			\item A \uline{partitioned matrix} is a matrix partitioned into submatrices by horizontal and/or vertical lines which extended along entire rows or columns of a matrix $A$
+		\end{itemize}
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Partitioned Matrices}
+	\begin{thm}
+		[8.15] Let $A$ be a square matrix partitioned as\[
+			A=\begin{pmatrix}
+				A_{11}&A_{12}\\
+				A_{21}&A_{22}
+			\end{pmatrix}
+		\] and $A_{11}, A_{22}\in M_n$. Then, 
+		\begin{multline*}
+			\exists A_{22}^{-1}\land \exists D^{-1} \land D=A_{11}-A_{12}A_{22}^{-1}A_{21} \\\Rightarrow\quad A^{-1}=\begin{pmatrix}
+				D^{-1}& -D^{-1}A_{12}A_{22}^{P-1}\\
+				-A_{22}^{-1}A_{21}D^{-1}&A_{22}^{-1}(I+A_{21}D^{-1}A_{12}A_{22}^{-1})
+			\end{pmatrix}
+		\end{multline*}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section partitioned_matrices (end)
+
+% \section{Decomposing Matrices} % (fold)
+% \label{sec:decomposing_matrices}
+%
+% % section decomposing_matrices (end)
+\end{document}
