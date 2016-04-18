@@ -1,0 +1,256 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\author[조남운]{\url{econMath.namun+2016sp@gmail.com}}
+\title{Limits and Open Sets}
+\subtitle{Ch.12}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Sequences of Real Numbers} % (fold)
+\label{sec:sequences_of_real_numbers}
+\begin{frame}[t]{(Sub)Sequences of Real Number: Definition}
+	\begin{defn}
+		[Sequence of Real Number]
+		$\{x_n\}_{n=1}^\infty$ is a \uline{sequence of real number} if:
+		\[
+			x:\mathbb{N}\rightarrow \mathbb{R},\quad x(i) = x_i 
+		\]
+		\textit{I.e.,} sequence of real number is just a real function whose domain is $\mathbb{N}$ (the set of (all) natural numbers, or the set of (all) positive integers)
+	\end{defn}
+	\begin{defn}
+		[Subsequence]
+		Let $M=\{n_i\}_{i=1}^\infty$ be any infinite subset of $\mathbb{N}$ and $n_i > n_j \forall i>j$. (\textit{I.e.}, increasing sequence of natural numbers). A sequence $\{y_n\}_{n=1}^\infty$ is a \uline{subsequence} of $\{x_n\}_{n=1}^\infty$ if:\[
+			y_j = x_{n_j},\quad j\in\mathbb{N}
+		\]
+	\end{defn}
+
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Limit and Convergence: Definition}
+	\begin{defn}
+		[Limit of a Sequence, Convergence]
+		$\bar r\in \mathbb{R}$ is the \uline{limit} of a sequence of $\{x_n\}_{n=1}^\infty$ if:
+		\[
+			\forall \epsilon>0,\quad \exists \bar N\in\mathbb{N} \quad s.t.\quad \forall n\ge\bar N \quad |x_n - \bar r|<\epsilon
+		\]\[
+			\text{Then, } \lim x_n = \bar r \quad or\quad \lim_{n\rightarrow\infty}x_n = \bar r\quad or\quad x_n \rightarrow \bar r \tag{$x_n$ \uline{converges} to $\bar r$}
+		\]
+	\end{defn}
+	\begin{enumerate}[Note 1:]
+		\item Somtimes, $\epsilon\in(0,\bar\alpha)$ is used (for all small positive real numbers)
+		\item $|x_n - \bar r|<\epsilon$ has alternative notation: $\epsilon$-interval: $x_n \in I_\epsilon(\bar r )$
+	\end{enumerate}
+	\begin{defn}
+		[Limit of a Real Function ($\lim_{x\rightarrow \bar x_0} f(x)= \bar r $)]
+		\[
+		 \forall \epsilon>0,\exists \delta>0 \quad s.t.\quad x\in D\land 0<|x-\bar x_0 |<\delta \Rightarrow  |f(x)-\bar r |<\epsilon
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Algebraic Properties of Limits}
+	\begin{thm}
+		[12.1] A sequence can have at most on limit.
+	\end{thm}
+	\begin{thm}
+		[12.2]
+		\[
+			\text{If}\quad x_n \rightarrow \bar x \quad\land\quad y_n \rightarrow \bar y, 
+		\]
+		\begin{enumerate}
+			\item $x_n\pm y_n \rightarrow \bar x \pm \bar y$ (Th 12.2)
+			\item $x_n y_n \rightarrow \bar x \bar y$ (Th 12.3)
+			\item $x_n / y_n \rightarrow \bar x / \bar y $
+		\end{enumerate}
+	\end{thm}
+	\begin{thm}
+		[12.4] \[
+			x_n \rightarrow \bar x \quad\land\quad x_n \le[\ge] \bar b\quad\forall n \Rightarrow \bar x \le[\ge] \bar b 
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section sequences_of_real_numbers (end)
+
+\section{Sequences in $\mathbb{R}^m$} % (fold)
+\label{sec:sequences_in_mathbb_r_m}
+\begin{frame}[t]{Convergence in $\mathbb{R}^m$ Space}
+	\begin{defn}
+		[Sequence of Vector]
+		$\{\mathbf{x_n}\}_{n=1}^\infty$ is a \uline{sequence of vector} if:
+		\[
+			\mathbf{x}:\mathbb{N}\rightarrow \mathbb{R}^m,\quad \mathbf{x}(i) = \mathbf{x_i} 
+		\]
+	\end{defn}
+	\begin{defn}
+		[$\epsilon$-ball about $\bar r$]
+		$B_\epsilon( \mathbf{\bar r})$, \uline{$\epsilon$-ball about $\mathbf{\bar  r}$} is defined as:
+		\[
+			B_\epsilon(\mathbf{r}):=\{\mathbf{x}\in\mathbb{R}^m: ||\mathbf{x-\bar r}||<\epsilon \}
+		\]
+	\end{defn}
+	Note: Geographically, $\epsilon$-ball is hyperball in $m$ dimensions, or bounded by an $m-1$ sphere
+	\begin{defn}
+		[Limit of a Sequence of Vector]
+		\[
+			\mathbf{x_n}\rightarrow\mathbf{x} \quad\text{if}\quad \forall\epsilon>0,\quad\exists \bar N \quad s.t.\quad \forall n\ge\bar N,\quad \mathbf{x_n}\in B_\epsilon(\mathbf{x})
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Convergence of Vectors}
+	\begin{thm}
+		[12.5] Let $\mathbf{x_n}=(x_{1n},\cdots,x_{mn})$. $\mathbf{x_n}$ converges iff:
+		\[
+			x_{in} \rightarrow \bar x_{in} \quad \forall i
+		\]
+	\end{thm}
+	\begin{thm}
+		[12.6] If $\mathbf{x_n}\rightarrow\mathbf{x^\ast}$, $\mathbf{y_n} \rightarrow\mathbf{y^\ast}$, and $c_n\rightarrow c^\ast$, then\[
+			c_n\mathbf{x_n}+\mathbf{y_n}\rightarrow c^\ast \mathbf{x^\ast} + \mathbf{y^\ast}
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section sequences_in_mathbb_r_m (end)
+
+\section{Open Sets} % (fold)
+\label{sec:open_sets}
+\begin{frame}[t]{Open: Definition}
+	\begin{defn}
+		[Open] A set $S\in\mathbb{R}^m$ is \uline{open} if \[
+			\forall \mathbf{x}\in S \quad\Rightarrow\quad \exists \epsilon>0 \quad s.t.\quad B_\epsilon(\mathbf{x})\in S
+		\]
+	\end{defn}
+	Geographically, open set has no boundary.
+	\begin{thm}
+		[12.7] Open balls are open sets
+	\end{thm}
+	\begin{thm}[12.8]
+		\begin{enumerate}
+			\item Any union of open set is open
+			\item The finite intersection of open sets is open
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Interior}
+	\begin{defn}
+		[Interior]
+		$int S$, or \uline{Interior} of $S$ is union of all open sets contained in $S$
+	\end{defn}
+	Note: Interior is the largest open subset of $S$
+	\begin{block}
+		{Open and Closed}
+		\begin{center}
+			\begin{tabular}{l|ll}
+			& Open & Not Open\\
+			\hline
+			Closed &&\\
+			Not Closed &&
+			\end{tabular}
+		\end{center}
+	\end{block}
+\end{frame}
+
+%--- Next Frame ---%
+% section open_sets (end)
+
+\section{Closed Sets} % (fold)
+\label{sec:closed_sets}
+\begin{frame}[t]{Closed: Definition}
+	\begin{defn}
+		[Closed]
+		A set $S\in\mathbb{R}^m$ is \uline{closed} if, the limits of all convergent sequence $\{\mathbf{x}_n\}_{n=1}^\infty\in S$ are contained in $S$
+	\end{defn}
+	Note: Closed set must contain all its boundary points. 
+	\begin{thm}
+		[12.9] $S\in\mathbb{R}^m$ is closed iff $S^c=\mathbb{R}^m - S$ is open
+	\end{thm}
+	\begin{thm}
+		[12.10]
+		\begin{enumerate}
+			\item Any intersection of closed sets is closed
+			\item The finite union of closed sets is closed
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Closure, Boundary}
+	\begin{defn}
+		[Closure] $cl S$ or $\bar S$ is \uline{closure} of $S$ if It is the intersection of all closed sets containing $S$
+	\end{defn}
+	Intuitively, closure is the smallest closed set contains $S$
+	\begin{defn}
+		[Bounadry] $\mathbf{x}$ is in the \uline{boundary} of a set $S$ if \[
+			\forall \epsilon>0, \quad B_\epsilon(\mathbf{x})\cap S \neq \varnothing \quad\land\quad B_\epsilon(\mathbf{x})\cap S^c \neq \varnothing
+		\]
+	\end{defn}
+	\begin{thm}
+		[12.12] Boundary of $S$ = $cl S \cap cl S^c$
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section closed_sets (end)
+
+\section{Compact Sets} % (fold)
+\label{sec:compact_sets}
+\begin{frame}[t]{Bounded, Compact}
+	\begin{defn}
+		[bounded] $S\in\mathbb{R}^n$ is \uline{bounded} if:\[
+			\exists b\in \mathbb{R}\quad s.t.\quad ||\mathbf{x}||\le b\quad \forall \mathbf{x}\in S
+		\]
+	\end{defn}
+	\begin{defn}
+		[Compact] $S\in\mathbb{R}^n $ is \uline{compact} iff $S$ is closed and bounded
+	\end{defn}
+	\begin{thm}[12.13-14]
+		\begin{itemize}
+			\item Any sequence contained in the compact set $[0,1]$ has a convergent subsequence (Th 12.13)
+			\item Any sequence contained in the compact set $C\in\mathbb{R}^n$ has a convergent subsequence whose limit lies in $C$ (Bolzano-Weierstrass Theorem)
+		\end{itemize}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section compact_sets (end)
+\end{document}
+
