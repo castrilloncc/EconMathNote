@@ -1,0 +1,184 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% \documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Functions of Several Variables}
+\subtitle{Ch.13}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Functions Between Euclidean Spaces} % (fold)
+\label{sec:functions_between_euclidean_spaces}
+\begin{frame}[t]{Definitions}
+	\begin{defn}
+		[Function, Domain, Target, Image: General Definitions]
+		\uline{Function} $f:A\rightarrow B$ is a rule that assign each object of $A$ (\uline{domain}) to one object in $B$ (\uline{target space}). \uline{Image} of $f$ is $\{f(\mathbf{x})\vert \mathbf{x}\in A\}\in B$
+	\end{defn}
+	\begin{block}
+		{Examples: $f:\mathbb{R}^n\rightarrow\mathbb{R}$}
+		\begin{align*}
+			f(\mathbf{x})&=\bar{\mathbf{a}}\bullet\mathbf{x}\tag{Linear}\\
+			f(\mathbf{x})&=\bar k \prod_i x_i^{\bar b_i} \tag{Cobb-Douglas}\\
+			f(\mathbf{x})&=\bar k \left(\sum_i \bar c_i x_i ^{-\bar a}\right)^{-\bar b / \bar a} \tag{CES}
+		\end{align*}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{$\mathbf{f}:\mathbb{R}^k\rightarrow\mathbb{R}^m$}
+	\begin{block}
+		{$\mathbf{f}:\mathbb{R}^k\rightarrow\mathbb{R}^m$}
+		Let $f_i: \mathbb{R}^n\rightarrow\mathbb{R}$. Then $\mathbf{f}:\mathbb{R}^k\rightarrow\mathbb{R}^m$ can be represented by $f_i$ ($i=1,2,\cdots,m$)
+		\[
+			\mathbf{f(x)}:=(f_1(\mathbf{x}),\cdots,f_m(\mathbf{x}))
+		\]
+	\end{block}
+	\begin{block}
+		{Examples}
+		\begin{itemize}
+			\item Production function with $k$ input factors and $m$ products
+			\item Utility mapping $\mathbf{u}: \mathbb{R}^{km}\rightarrow\mathbb{R}^m$
+			\begin{itemize}
+				\item $u_i:\mathbb{R}^k\rightarrow\mathbb{R}$: Individual utility function of customer $i$
+				\item $k$: \# of goods
+				\item $m$: \# of consumers
+				\item $\mathbf{x_i}$: consumption of customer $i$
+				\[
+					\mathbf{u}(\mathbf{x_1},\cdots,\mathbf{x_m})=(u_1(\mathbf{x_1}),\cdots,u_m(\mathbf{x_m}))
+				\]
+			\end{itemize}
+		\end{itemize}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{$\mathbf{f}:\mathbb{R}\rightarrow\mathbb{R}^m$}
+	\begin{block}
+		{$\mathbf{f}(t)$}
+		\[
+			\mathbf{f}(t):=\left(f_1(t),\cdots,f_m(t)\right)
+		\]
+	\end{block}
+	Geometrically, $\mathbf{f}(t)$ is a parametric curve on $\mathbb{R}^m$ space (cf. parametric line)
+\end{frame}
+%--- Next Frame ---%
+% section functions_between_euclidean_spaces (end)
+
+\section{Geometric Representation of Functions} % (fold)
+\label{sec:geometric_representation_of_functions}
+\begin{frame}[t]{Level Curves}
+	\begin{block}
+		{Level Curves}
+		Let $f:\mathbb{R}^2\rightarrow\mathbb{R}^1$. Then \uline{level curve}s of $f$ are curves on domain space with same $f(\mathbf{x})$. \textit{I.e.,}
+		\[
+			\{\mathbf{x}\vert f(\mathbf{x})=\bar c\}
+		\]
+		\begin{itemize}
+			\item Isoquant: level curve of production function
+			\item Indifference curve: level curve of utility function
+			\item Generally, when $f:\mathbb{R}^k\rightarrow\mathbb{R}$ it is called \uline{level set} and this is $k$ dimensioal nonlinear object
+		\end{itemize}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section geometric_representation_of_functions (end)
+
+\section{Special Kinds of Functions} % (fold)
+\label{sec:special_kinds_of_functions}
+\begin{frame}[t]{Linear Functions on $\mathbb{R}^k$}
+	\begin{defn}
+		[Linear Function from $\mathbf{R}^k$ to $\mathbf{R}^m$]
+		$\mathbf{f}$ is a \uline{linear function} when
+		\begin{enumerate}
+			\item $\mathbf{f}(\mathbf{x_1}+\mathbf{x_2})=\mathbf{f}(\mathbf{x_1})+\mathbf{f}(\mathbf{x_2})$
+			\item $\mathbf{f}(r\mathbf{x})=r\mathbf{f(x)}$
+		\end{enumerate}
+	\end{defn}
+	\begin{thm}
+		[13.1,2] \begin{itemize}
+			\item $f:\mathbb{R}^k\rightarrow\mathbb{R}$ is a linear function $\Rightarrow$ $f(\mathbf{x})=\bar{\mathbf{a}}\bullet\mathbf{x}$, $\mathbf{a}\in\mathbb{R}^k$
+			\item $\mathbf{f}:\mathbb{R}^k\rightarrow\mathbb{R}^m$ is a linear function $\Rightarrow$ $\mathbf{f}(\mathbf{x})=\bar A\bullet\mathbf{x}$, $A:m\times k$ matrix
+		\end{itemize}
+		
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Quadaratic Forms}
+	\begin{defn}
+		[Quadratic Form on $\mathbb{R}^k$]
+		$f:\mathbb{R}^k\rightarrow\mathbb{R}$ is of the \uline{quadratic form} if:
+		\[
+			f(\mathbf{x})=\sum_{i,j}^k \bar a_{ij} x_i x_j
+		\]more elegantly, 
+		\[
+			f(\mathbf{x}) = \mathbf{x}^T \bar A \mathbf{x}
+		\]
+		In this case, $A$ can be always symmetric.
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Monomial}
+	\begin{defn}
+		[Monomials on $\mathbb{R}^k$]
+		$f:\mathbb{R}^k\rightarrow\mathbb{R}$ is a \uline{monomial} if:\[
+			f(\mathbf{x})= \bar c \prod_{i}^k x_i^{\bar{a_i}}, \quad a_i\in\mathbb{N}+\{0\}
+		\]
+		The \uline{degree} of above monomial is $\sum_i^k a_i$
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+% section special_kinds_of_functions (end)
+
+\section{Continuous Functions} % (fold)
+\label{sec:continuous_functions}
+\begin{frame}[t]{Continuous}
+	\begin{defn}
+		[Continuous Function on $\mathbb{R}^k$]
+		$\mathbf{f}=(f_1,\cdots,f_m)$ is \uline{continuous} at $\mathbf{x}$ iff all $f_i$ are continuous at $\mathbf{x}$
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+% section continuous_functions (end)
+
+% \section{Vocabulary of Functions} % (fold)
+% \label{sec:vocabulary_of_functions}
+%
+% % section vocabulary_of_functions (end)
+\end{document}
+
