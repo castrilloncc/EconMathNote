@@ -1,0 +1,276 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+% \documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\bd}{\mathbf}
+\newcommand{\p}{\partial}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Implicit Functions and Their Derivatives}
+\subtitle{Ch.15}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Implicit Functions} % (fold)
+\label{sec:implicit_functions}
+\begin{frame}[t]{Explicit Function, Implicit Function}
+	\begin{block}
+		{Explicit Function}
+		\[
+			x_{n+1}=x_{n+1}(\bd{x})
+		\]
+		In explicit functions, all input $\bd{x}=(x_1,\cdots,x_n)$ are free (or exogenous) variables. In this form, endogenous variables and exogenous variable ($x_{n+1}$) can be distinguished easily.
+	\end{block}
+	\begin{block}
+		{Implicit Function}
+		Let $x_{n+1}=x_{n+1}(\bd x)$. Then, we can find alternative representation 
+		\[
+			G=G(\bd{x},x_{n+1})=0
+		\]
+		$G$ is not a function but an equation (implicit equation). In this representation, $x_{n+1}$ is an implicit function of the exogeneous variables $\bd{x}=(x_1,\cdots,x_n)$. In this form, we can not distinguish easily between exogenous and endogenous variables. 
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Implicit Functions: Example}
+	\begin{block}
+		{Representing Implicit Function by Explicit Function(s)}
+		\[
+			G(x,y) = x^2 + y^2 - 1 = 0
+		\]
+		$y$ can be an implicit function of $x$. On the other hand, $x$ also can be an implicit function of $y$. 
+		\[
+			y=\begin{cases}
+				\sqrt{1-x^2},\quad y\ge 0\\
+				-\sqrt{1-x^2},\quad y< 0
+			\end{cases}
+		\]
+		\[
+			x=\begin{cases}
+				\sqrt{1-y^2},\quad x\ge 0\\
+				-\sqrt{1-y^2},\quad x< 0
+			\end{cases}
+		\]
+		We cannot find well-defined functional relationship on the boundary of these explicit functions.
+	\end{block}
+	% However, in the boundary, any implicit function can be represented by explicit function. (IFT)
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{The Implicit Function Theorem (IFT) for $\bb{R}^2$}
+	\begin{block}
+		{Main Question}
+		\begin{enumerate}
+			\item Does $G(x,y)=\overline c$ determine y as a well-defined continuous function of $x$ for around $\overline x_0$ and $\overline y_0$?
+			\item If (1) is true, $y^\prime = \frac{\p y}{\p x}=?$
+		\end{enumerate}
+	\end{block}
+	We can get IFT on $\bb{R}^2$ by differentiate $G(x,y(x))=\overline c$ wrt $x$ at $\overline x_0$ (Use Chain Rule I: Th14.1)
+	\begin{block}
+		{Chain Rule I}
+		Let $g(t)=f(\bd{x}(t))$, $g:\bb{R}\rightarrow\bb{R}$, $f:\bb{R}^n\rightarrow\bb{R}$, $\bd x :\bb{R}\rightarrow\bb{R}^n$. Then, \[
+			\frac{d g}{dt} = Df_{\bd x}(\bd x) \frac {\bd x(t)}{dt} = \frac{\p f}{\p x_1}\frac{dx_1}{dt}+ \cdots +\frac{\p f}{\p x_n}\frac{dx_n}{dt}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{IFT ($\bb{R}^2$)}
+	\begin{thm}
+		[15.1 (IFT)]
+		Let $G(x,y)$ be a $C^1$ function on $B_\epsilon(\overline x_0,\overline y_0)$ in $\bb{R}^2$. Suppose that $G(\overline x_0,\overline y_0)=\overline c$ and consider the implicit equation\[
+			G(x,y)=\overline c
+		\]
+		If $\frac{\p G}{\p y}(\overline x_0,\overline y_0) \neq 0$, (\textit{i.e.,} tangent line is not vertical) then $\exists y=y(x)\in C^1$ on $I=I_\epsilon(\overline x_0)$ s.t.,
+		\begin{enumerate}
+			\item $G(x,y(x))\equiv \overline c \quad \forall x\in I$
+			\item $y(\overline x_0)=\overline y_0$ 
+			\item and \[
+				y^\prime (\overline x_0) = -\frac{\frac{\p G}{\p x}(\overline x_0, \overline y_0)}{\frac{\p G}{\p y}(\overline x_0, \overline y_0)}
+			\]
+		\end{enumerate}
+	\end{thm}
+	We can extend IFT on $\bb{R}^n$
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{IFT on $\bb{R}^n$}
+	\begin{thm}
+		[15.2]Let $G(\bd{x},f)$ be a $C^1$ function on $B_\epsilon(\overline {\bd x_0},\overline f_0)$ in $\bb{R}^n$. Suppose that $G(\overline {\bd x_0},\overline f_0)=\overline c$ and consider the implicit equation\[
+		G(\bd x,f)=\overline c
+	\]
+	If $\frac{\p G}{\p f}(\overline {\bd x_0},\overline f_0) \neq 0$ (\textit{i.e.,} tangent hyperplane is not vertical), then $\exists f=f(\bd x)\in C^1$ on $B=B_\epsilon(\overline {\bd x_0})$ s.t.,
+	\begin{enumerate}
+		\item $G(\bd x,f(\bd x))\equiv \overline c \quad \forall \bd x\in B$
+		\item $f(\overline {\bd x_0})=\overline f_0$ 
+		\item and \[
+			\frac{\p f}{\p x_i} (\overline {\bd x_0}) = -\frac{\frac{\p G}{\p x_i}(\overline {\bd x_0}, \overline f_0)}{\frac{\p G}{\p f}(\overline {\bd x_0}, \overline f_0)} \quad \forall i
+		\]
+	\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section implicit_functions (end)
+
+\section{Level Curves and Their Tangents} % (fold)
+\label{sec:level_curves_and_their_tangents}
+\begin{frame}[t]{IFT: Geometric Implication}
+	\begin{thm}
+		[15.3] Let $(x_0,y_0)$ is on the $G(x,y)=\bar c$ in the plane and $G\in C^1$. 
+		\begin{enumerate}[{Case} 1]
+			\item If $\frac{\p G}{\p y} (x_0,y_0)\neq 0$, $\exists y = y(x)\in C^1$ around $x=x_0$ with slope\[
+				-\frac{\frac{\p G}{\p x}(\overline x_0, \overline y_0)}{\frac{\p G}{\p y}(\overline x_0, \overline y_0)}
+			\]
+			\item If $\frac{\p G}{\p y} (x_0,y_0)= 0$, 
+			\begin{enumerate} [{Case 2-}1]
+				\item If $\frac{\p G}{\p x} (x_0,y_0) \neq 0$, $\exists x = x(y)\in C^1$ around $y=y_0$ with slope\[
+				-\frac{\frac{\p G}{\p y}(\overline x_0, \overline y_0)}{\frac{\p G}{\p x}(\overline x_0, \overline y_0)}
+			\]
+				\item If $\frac{\p G}{\p x} (x_0,y_0) = 0$, there is no well-defined function around $(x_0,y_0)$ (irregular point)
+			\end{enumerate}
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Regular on $\bb{R}^2$}
+	\begin{defn}
+		[Regular Point]
+		$(x_0,y_0)$ is a \uline{regular point} of the $G(x,y)\in C^1$ if:\[
+			DG_{(x,y)}(x_0,y_0) = \left(\frac{\p G}{\p x} (x_0,y_0), \frac{\p G}{\p y} (x_0,y_0) \right)\neq \bd{0} = (0,0)
+		\]
+	\end{defn}
+	We can find well-defined explicit function form around regular point. Geometrically, this implies smooth curve (or 1d manifold, 1d object) in $\bb{R}^2$
+	\begin{thm}
+		[15.4] Let $G\in C^1$ around $(x_0,y_0)$ and this point is regular. Then, $\nabla G(x_0,y_0)$ is perpendicular to the level set of G at $(x_0,y_0)$ \[
+			\nabla G(x_0,y_0)\bullet \left( 1,-\frac{\frac{\p G}{\p x}(\overline x_0, \overline y_0)}{\frac{\p G}{\p y}(\overline x_0, \overline y_0)}\right) = 0
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Extention to $\bb{R}^n$ Space}
+	\begin{defn}
+		[Regular Point on $\bb{R}^n$]
+		$\bd{x}_0$ is a \uline{regular point} of the $G(\bd x)\in C^1$ if:\[
+			\nabla G (\bd x_0) = DG_{\bd x}({\bd x}_0) \neq \bd{0} 
+		\]
+	\end{defn}
+	We can find well-defined explicit function form around regular point. Geometrically, this implies smooth hypersurface (or $n-1$ dimensional manifold, $n-1$ dimensional object) in $\bb{R}^n$
+\end{frame}
+\begin{thm}
+	[15.6] If $f:\bb{R}^n\rightarrow \bb{R} \in C^1$, $\bd{x}^\ast\in\bb{R}^n$, and $\nabla f(\bd{x}^\ast)\neq \bd{0}$, Then:
+	\begin{enumerate}
+		\item The level set of $f$ through $\bd{x}^\ast$,\[
+			\mathcal{F}_{f(\bd{x}^\ast)} \equiv \left\{ \bd{x}: f(\bd{x})=f(\bd{x}^\ast) \right\}
+		\]
+		can be viewed as the graph of real-valued $C^1$ function of $(n-1)$ variables in a neighborhood of $\bd{x}^\ast$
+		\item $\nabla f(\bd{x}^\ast)$ is perpendicular to the tangent hyperplane of $\mathcal{F}_{f(\bd{x}^\ast)}$ at $\bd{x}^\ast$
+		\item $\bd v$ is a tangent vector of $\mathcal{F}_{f(\bd{x}^\ast)}$ at $\bd{x}^\ast$ iff $Df_{\bd x}(\bd{x}^\ast)\bullet \bd v = 0$
+ 	\end{enumerate}
+\end{thm}
+%--- Next Frame ---%
+% section level_curves_and_their_tangents (end)
+
+\section{Systems of Implicit Functions} % (fold)
+\label{sec:systems_of_implicit_functions}
+\begin{frame}[t]{Systems of Implicit Functions}
+	\begin{defn}
+		[System of implicit functions] A set of $m$ equations in $m+n$ unknowns
+		\begin{align*}
+			\bd{f}(x_1,\cdots,x_{m+n}) = \bd c \in \bb{R}^m
+		\end{align*}
+		is called a \uline{system of implicit functions} if there is a parition of the variables into $n$ exogenous variables and $m$ endogenous variables, so that if exogenous variables are given, the resulting system can be solved uniquely.
+	\end{defn}
+		By linearization, we can solve $df_1,\cdots,df_m$ from given $dx_1,\cdots,dx_n$ around $(\bd{f},\bd{x})=(\bd{f}^\ast,\bd{x}^\ast)$
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Linearization}
+	\begin{block}
+		{Linearized System}
+		We can get linearize system from nonlinear system
+		\begin{align*}
+			F_1(f_1,\cdots,f_m, x_1,\cdots,x_n) &= \bar c_1\\
+			F_2(f_1,\cdots,f_m, x_1,\cdots,x_n) &= \bar c_2\\
+			\cdots\\
+			F_m(f_1,\cdots,f_m, x_1,\cdots,x_n) &= \bar c_m
+		\end{align*}
+		by taking derivative on a given point $(\bd{f},\bd{x})=(\bd{f}^\ast,\bd{x}^\ast)$,
+		\begin{align*}
+			\frac{\p F_1}{\p f_1}df_1 + 
+			&\cdots + \frac{\p F_1}{\p f_m}df_m + \frac{\p F_1}{\p x_1}dx_1 + 
+			\cdots + \frac{\p F_1}{\p x_n}dx_n 
+			&= 0 \\
+			\vdots&
+			&\vdots
+			\\
+			\frac{\p F_m}{\p f_1}df_1 + 
+			&\cdots + \frac{\p F_m}{\p f_m}df_m + \frac{\p F_m}{\p x_1}dx_1 + \cdots + \frac{\p F_m}{\p x_n}dx_n 
+			&= 0 \\
+		\end{align*}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Solving Linearized System}
+	\begin{block}
+		{Solving Prodecure}
+		\begin{align*}
+			\frac{\p F_1}{\p f_1}df_1 + 
+			&\cdots + \frac{\p F_1}{\p f_m}df_m 
+			&= -\left(\frac{\p F_1}{\p x_1}dx_1 + 
+			\cdots + \frac{\p F_1}{\p x_n}dx_n \right) \\
+			\vdots
+			\\
+			\frac{\p F_m}{\p f_1}df_1 + 
+			&\cdots + \frac{\p F_m}{\p f_m}df_m 
+			&= -\left( \frac{\p F_m}{\p x_1}dx_1 + \cdots + \frac{\p F_m}{\p x_n}dx_n\right) \\
+		\end{align*}
+		In this system, $d\bd{f}$ is unknown and others are given explicitly. Therefore, 
+		\[
+			d\bd{f} = - (D{\bd F}_{\bd {f}}(\bd{f}^\ast,\bd{x}^\ast))^{-1} \cdot D{\bd F_{\bd{x}}}(\bd{f}^\ast,\bd{x}^\ast)
+			% \begin{pmatrix}
+% 				\sum_i^n \frac{\p F_1}{\p x_i}dx_i\\
+% 				\vdots\\
+% 				\sum_i^n \frac{\p F_m}{\p x_i}dx_i
+% 			\end{pmatrix}
+		\]
+		and when $d\bd{x}=d\bd{x}^\ast$, $\bd{f}=\bd{f}^\ast + d\bd{f}$
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section systems_of_implicit_functions (end)
+
+\end{document}
+
