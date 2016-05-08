@@ -1,0 +1,120 @@
+% \documentclass[a4paper,11pt]{article}
+% \usepackage[hyperref]{beamerarticle}
+\documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\bd}{\mathbf}
+\newcommand{\p}{\partial}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Quadratic Forms and Definite Matrices}
+\subtitle{Ch.16}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Quadratic Forms} % (fold)
+\label{sec:quadratic_forms}
+\begin{frame}[t]{Quadratic Forms}
+	\begin{defn}
+		[Quadratic Form]
+		A \uline{quadratic form} on $\bb{R}^n$ is a real-valued function of the form\[
+			Q(\bd{x})=\bd{x}^T A \bd{x},\quad \bd{x}\in\bb{R}^n,\quad A^T=A
+		\]
+	\end{defn}
+	For more detailed description, see Ch13 (section 3).
+\end{frame}
+%--- Next Frame ---%
+% section quadratic_forms (end)
+
+\section{Definiteness of Quadratic Forms} % (fold)
+\label{sec:definiteness_of_quadratic_forms}
+\begin{frame}[t]{Definiteness}
+	\begin{block}
+		{Definiteness: Overview}
+		When $Q=\bd{x}^TA\bd{x}$ and $A$ is a diagonal matrix\[
+			A = \begin{pmatrix}
+				a_{11} & 0 & 0&\cdots& 0\\
+				0 & a_{22} & 0&\cdots& 0\\
+				\vdots &\vdots &\vdots &\vdots &\vdots\\
+				0 & 0 & 0 & \cdots & a_{nn} 
+			\end{pmatrix}
+		\]
+		\begin{itemize}
+			\item Positive Definite (PD): $a_{ii}>0 \quad\forall i$
+			\item Positive Semi Definite (PSD): $a_{ii}\ge 0 \quad\forall i$
+			\item Negative Definite (ND): $a_{ii}<0 \quad\forall i$
+			\item Negative Semi Definite (NSD): $a_{ii}\le 0 \quad\forall i$
+			\item Indefinite (ID): $a_{ii}<0 $ for some $i$, and $a_{ii}>0 $ for some $i$
+		\end{itemize}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Definite Symmetric Matrices}
+	\begin{defn}
+		[PD,PSD,ND,NSD,ID]
+		Let $A$ be an $n\times n$ symmetric matrix and $Q=\bd{x}^T A \bd{x}$, then $A$ is:
+		\begin{enumerate}
+			\item PD if $Q>0$ $\forall\bd{x}\neq\bd{0}$ in $\bb{R}^n$
+			\item PSD if $Q\ge0$ $\forall\bd{x}\neq\bd{0}$ in $\bb{R}^n$
+			\item ND if $Q<0$ $\forall\bd{x}\neq\bd{0}$ in $\bb{R}^n$
+			\item NSD if $Q\le 0$ $\forall\bd{x}\neq\bd{0}$ in $\bb{R}^n$
+			\item ID if $Q>0$ for some $\bd{x}\in \bb{R}^n$ and $Q<0$ for some $\bd{x}\in\bb{R}^n$
+		\end{enumerate}
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Principle Minors of a Matrix}
+	\begin{defn}
+		[Principal Submatrix, Principal Minor]
+		Let $A$ be an $n\times n$ symmetric matrix. $k$th order \uline{principal submatrix} of $A$ is $k\times k$ submatrix of $A$ obtained by deleting $n-k$ columns $C_1,\cdots,C_{n-k}$ and same $n-k$ rows $R_1,\cdots,R_{n-k}$. 
+		
+		$k$th order \uline{principal minor} of $A$ is the determinant of $k$th order prinicipal submatrix.
+	\end{defn}
+	Note: the number of $k$th order principal submatrix can be $nCk$. 
+\end{frame}
+%--- Next Frame ---%
+% section definiteness_of_quadratic_forms (end)
+
+\section{Linear Constraints and Bordered Matrices} % (fold)
+\label{sec:linear_constraints_and_bordered_matrices}
+
+% section linear_constraints_and_bordered_matrices (end)
+
+\end{document}
+
