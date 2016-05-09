@@ -1,6 +1,6 @@
-% \documentclass[a4paper,11pt]{article}
-% \usepackage[hyperref]{beamerarticle}
-\documentclass[final]{beamer}
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+% \documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -101,19 +101,145 @@
 
 \begin{frame}[t]{Principle Minors of a Matrix}
 	\begin{defn}
-		[Principal Submatrix, Principal Minor]
+		[Principal Submatrix (PS), Principal Minor (PM)]
 		Let $A$ be an $n\times n$ symmetric matrix. $k$th order \uline{principal submatrix} of $A$ is $k\times k$ submatrix of $A$ obtained by deleting $n-k$ columns $C_1,\cdots,C_{n-k}$ and same $n-k$ rows $R_1,\cdots,R_{n-k}$. 
 		
 		$k$th order \uline{principal minor} of $A$ is the determinant of $k$th order prinicipal submatrix.
 	\end{defn}
-	Note: the number of $k$th order principal submatrix can be $nCk$. 
+	Note: the number of $k$th order principal submatrix can be $nCk$. We will denote $k$th order principal minor by $PM_k(A)$.
+	\begin{defn}
+		[Leading PS, Leading PM]
+		$k$th order \uline{leading principal submatrix} of $A$ is an unique $k$th order submatrix obtained by deleting the last $n-k$ rows and columns from $A$. $k$th order \uline{leading principal minor} of A ($LPM_k(A)$  or $|A_k|$) is the determinant of $k$th order leading principal submatrix of $A$
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Test for Definiteness}
+	\begin{thm}
+		[16.1,2] Let $A$ be an $n\times n$ symmetric matrix. Then, 
+		\begin{enumerate}
+			\item $A$ is PD iff $LPM_k(A)>0$ $\forall k$
+			\item $A$ is PSD iff $PM_k(A)\ge 0$ $\forall k$
+			\item $A$ is ND iff ${\rm sign}(LPM_k(A))={\rm{sign}}((-1)^k)\quad \forall k$
+			\item $A$ is NSD iff ${\rm sign}(PM_k(A))={\rm{sign}}((-1)^k)\quad \forall k$
+			\item Otherwise, $A$ is ID
+		\end{enumerate}
+	\end{thm}
+	Note: We can find more elegant criteria using eigenvalues (Ch.23). To check all $PM$, $\sum_i^n nCi$ determinants should be calculated. 
 \end{frame}
 %--- Next Frame ---%
 % section definiteness_of_quadratic_forms (end)
 
 \section{Linear Constraints and Bordered Matrices} % (fold)
 \label{sec:linear_constraints_and_bordered_matrices}
+\begin{frame}[t]{Bordered Matrix}
+	\begin{block}
+		{Finding global max/min of $Q(x_1,x_2)$ with one linear constraint}
+		\[
+			Q(x_1,x_2)=\bd{x}^T H \bd{x} = \begin{pmatrix}
+				x_1 x_2
+			\end{pmatrix}\begin{pmatrix}
+				a & b\\
+				b & c
+			\end{pmatrix}\begin{pmatrix}
+				x_1\\
+				x_2
+			\end{pmatrix} = ax_1^2 + 2bx_1x_2 + cx_2^2
+		\] on \[
+			\begin{pmatrix}
+				A & B
+			\end{pmatrix}\begin{pmatrix}
+				x_1\\
+				x_2
+			\end{pmatrix}=G\bd{x}=0
+		\]
+		Substitute $x_1$ to $-Bx_2/A$ and we can get one variable function $\tilde Q$ in terms of $x_2$\[
+			\tilde{Q}(x_2) = Q(-Bx_2/A,x_2)=\frac{aB^2-2bAB+cA^2}{A^2}x_2^2
+		\] \[
+			aB^2-2bAB+cA^2 = -\det \begin{pmatrix}
+				0&A&B\\
+				A&a&b\\
+				B&b&c
+			\end{pmatrix}=-\det \begin{pmatrix}
+				0&G\\
+				G^T&H
+			\end{pmatrix}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
 
+\begin{frame}[t]{Definiteness of Bordered Matrix}
+	\begin{thm}
+		[16.3] $Q(\bd{x})$ is PD[ND] on the constraint set $G\bd{x}=0$ iff\[
+			\det \begin{pmatrix}
+							0&A&B\\
+							A&a&b\\
+							B&b&c
+						\end{pmatrix}=\det \begin{pmatrix}
+							0&G\\
+							G^T&H
+						\end{pmatrix}
+		\] is negative[positive]
+	\end{thm}
+	Note: sign of determinant is dependent on both $n$ (size of $\bd{x}$) and $m$ (number of restriction)
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{General Bordered Matrix}
+	Consider general bordered matrix \[
+				Q(\bd{x})=\bd{x}^T A \bd{x} = \begin{pmatrix}
+					x_1 &\cdots& x_n
+				\end{pmatrix}\begin{pmatrix}
+					a_{11} & \cdots & a_{1n}\\
+					\vdots & \vdots & \vdots\\
+					a_{n1} & \cdots & a_{nn}
+				\end{pmatrix}\begin{pmatrix}
+					x_1\\\vdots\\x_n
+				\end{pmatrix}
+			\] with linear constraint set\[
+				B\bd{x}=\begin{pmatrix}
+					b_{11}&\cdots&b_{1n}\\
+					\vdots&\vdots&\vdots\\
+					b_{m1}&\cdots&b_{mn}
+				\end{pmatrix}\begin{pmatrix}
+					x_1\\\vdots\\x_n
+				\end{pmatrix}=\begin{pmatrix}
+					0\\\vdots\\0
+				\end{pmatrix}
+			\]
+			We can make $(n+m)\times(n+m)$ symmetric matrix (general bordered matrix) \[
+				H = \begin{pmatrix}
+					\bd{0}&B\\
+					B^T&A
+				\end{pmatrix}
+			\]
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Definiteness of General Bordered Matrix}
+	\begin{thm}
+		[16.4] To deterimne the definiteness of general bordered matrix, Check the signs of the last $n-m$ LPMs of $H$, starting with $LPM_{n+m}(H)$ ($i.e.,$ the determinant of $H$ itself). This means you should check the sign of \[
+			\underbrace{LPM_{n+m}(H), LPM_{n+m-1}(H), \cdots,LPM_{n+m-(n-m-1)}}_{n-m\text{ LPMs}}
+		\]
+		\begin{enumerate}[(a)]
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^m)$ and all $n-m$ LPMs have same sign, $Q$ is \uline{PD} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is \uline{strict global min} of $Q$ on the costraint set
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-m$ LPMs alternates in sign, $Q$ is \uline{ND} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is \uline{strict global max} of $Q$ on the costraint set
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Definiteness of General Bordered Matrix}
+	\begin{block}
+		{Continued}
+		\begin{enumerate}[(a)]
+			\item [(c)] if (a),(b) is violated by nonzero LPMs, $Q$ is \uline{ID} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is neigher a max nor a min of $Q$ on the constraint set
+		\end{enumerate}
+	\end{block}
+	Note: Test for NSD, PSD is much more tedious and trivial in economics $\rightarrow$ SKIP
+\end{frame}
+%--- Next Frame ---%
 % section linear_constraints_and_bordered_matrices (end)
 
 \end{document}
