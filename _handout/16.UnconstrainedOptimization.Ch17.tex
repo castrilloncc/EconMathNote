@@ -1,0 +1,306 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+% \documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\bd}{\mathbf}
+\newcommand{\p}{\partial}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Unconstrained Optimization}
+\subtitle{Ch.17}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Definitions} % (fold)
+\label{sec:definitions}
+\begin{frame}[t]{Definitions}
+	\begin{defn}
+		[(strict) max/min, (strict) local max/min]
+		Let $f:U\in \bb{R}^n\rightarrow \bb{R}$
+		\begin{enumerate}
+			\item A point $\bd{x}^\ast$ is a \uline{(global, or absolute) max, maximizer, maximum point} of $f$ on $U$ if $f(\bd{x^\ast})\ge f(\bd{x})\quad\forall \bd{x}\in U$
+			\item $\bd{x^\ast}\in U$ is a \uline{strict (global, or absolute) max} if $\bd{x^\ast}$ is a max and $f(\bd{x^\ast})>f(\bd{x})\quad\forall \bd{x}\in U-\{\bd{x^\ast}\}$
+			\item $\bd{x^\ast}\in U$ is a \uline{local (relative) max} of $f$ if $\exists \epsilon>0 \quad s.t.$ $f(\bd{x^\ast})\ge f(\bd{x})\quad\forall \bd{x}\in B_\epsilon(\bd{x^\ast})\cap U$
+			\item $\bd{x^\ast}\in U$ is a \uline{strict local (relative) max} of $f$ if $\exists \epsilon>0 \quad s.t.$ $f(\bd{x^\ast})> f(\bd{x})\quad\forall \bd{x}\in B_\epsilon(\bd{x^\ast})\cap U$
+		\end{enumerate}
+	\end{defn}
+	\begin{itemize}
+		\item Definition of min: $>,\ge \rightarrow <, \le$ 
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+% section definitions (end)
+
+\section{First Order Conditions} % (fold)
+\label{sec:first_order_conditions}
+\begin{frame}[t]{FOC}
+	\begin{thm}
+		[17.1] Let $f:U\in\bb{R}^n\rightarrow\bb{R}$ be a $C^1$ function. If $\bd{x^\ast}$ is a local max or min of $f$ and $\bd{x^\ast}$ is an interior point of $U$, then\[
+			\frac{\p f}{\p x_i}(\bd{x^\ast})=0\quad\forall i
+		\] In short, \[
+			Df_{\bd{x}}(\bd{x^\ast}) = \bd{0}
+		\] $\bd{x^\ast}$ is a critical point of $f$
+	\end{thm}
+	Note: Compare with one-var version FOC (Theorme 3.3)	\begin{thm}
+		[3.3: First Order Condition (FOC)]
+		$x_0$ is an interior max or min of $f$ $\Rightarrow$ $x_0$ is a critical point of $f$. $i.e.,$ $f^\prime(x_0)=0$
+		(Inverse is not always true)
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section first_order_conditions (end)
+
+\section{Second Order Conditions} % (fold)
+\label{sec:second_order_conditions}
+\begin{frame}[t]{SOC (Sufficient Conditions)}
+	\begin{thm}
+		[17.2] Let $f:U\in\bb{R}^n\rightarrow\bb{R}$ be a $C^2$ function and $U$ is open. Suppose $\bd{x^\ast}$ is a critical point of $f$. ($i.e.,Df_{\bd{x}}(\bd{x^\ast})=\bd{0}$) Then, 
+		\begin{enumerate}
+			\item If Hession ($D^2 f_\bd{x}(\bd{x^\ast})$) is ND, then $\bd{x}^\ast$ is a strict local max of $f$
+			\item If Hession ($D^2 f_\bd{x}(\bd{x^\ast})$) is PD, then $\bd{x}^\ast$ is a strict local min of $f$
+			\item If Hession is ID, $\bd{x^\ast}$ is neither a local max nor local min of $f$. (saddle point)
+		\end{enumerate}
+	\end{thm}
+	Note: one-var version: (Theorem 3.4)\[
+		f^\prime(x^\ast)=0\quad\land\quad f^{\prime\prime}<0 \quad\Rightarrow\quad x^\ast\text{ is a local max}
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{SOC (Necessary Conditions)}
+	\begin{thm}
+		[17.6] Let $f:U\in\bb{R}^n\rightarrow\bb{R}$ be a $C^2$ function and $U$ is open. Then,
+		\begin{enumerate}
+			\item $\bd{x^\ast}$ is a local min of $f$ $\Rightarrow$ $Df(\bd{x^\ast})=\bd{0}\quad\land\quad D^2f(\bd{x^\ast})$ is PSD
+			\item $\bd{x^\ast}$ is a local max of $f$ $\Rightarrow$ $Df(\bd{x^\ast})=\bd{0}\quad\land\quad D^2f(\bd{x^\ast})$ is NSD
+		\end{enumerate}
+	\end{thm}
+	Note: one-var version: \[
+		x^\ast\text{ is local max} \quad\Rightarrow\quad x^\prime=0\quad\land\quad f^{\prime\prime}\le 0
+	\]
+\end{frame}
+%--- Next Frame ---%
+% section second_order_conditions (end)
+
+\section{Global Maxima and Minima} % (fold)
+\label{sec:global_maxima_and_minima}
+\begin{frame}[t]{Finding Global Max/Min}
+	Different from one-var function, condition 1 (below) is not true when $f$ is multi-var function
+	\begin{block}
+		{Sufficient Conditions for Global Max/Min ($f:I\in\bb{R}\rightarrow\bb{R}$)}
+		\begin{enumerate}
+			\item $x^\ast$ is a local max/min and $x^\ast$ is the only critical point of $f$ in $I$
+			\item $f^{\prime\prime}\le 0\quad\forall I$. $i.e.,$ $f$ is concave on $I$ (max)
+			\begin{itemize}
+				\item $f^{\prime\prime}\le 0 \quad \forall I$ (max)
+				\item $f^{\prime\prime}\ge 0 \quad \forall I$ (min)
+			\end{itemize}
+		\end{enumerate}
+	\end{block}
+	However, condition 2 is true even when $f$ is multi-var function!
+	\begin{thm}
+		[17.8]
+		Let $f:U\in \bb{R}^n\rightarrow \bb{R}$ be a $C^2$ function with convex open domain $U$.
+		\begin{enumerate}
+			\item $DF(\bd{x^\ast})=\bd{0}$ and $D^2f_{\bd{x}}$ is PSD on $U$ $\Rightarrow $ $\bd{x^\ast}$ is a global max of $f$ on $U$
+			\item $DF(\bd{x^\ast})=\bd{0}$ and $D^2f_{\bd{x}}$ is NSD on $U$ $\Rightarrow $ $\bd{x^\ast}$ is a global min of $f$ on $U$
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section global_maxima_and_minima (end)
+
+\section{Economic Applications} % (fold)
+\label{sec:economic_applications}
+\begin{frame}[t]{Ordinary Least Squares (OLS)}
+	\begin{block}
+		{OLS}
+		Find $y=\bd{x}\bd{\beta}+{c}$ for given $N$ data $X = \begin{pmatrix}
+			\bd{x_1}\\
+			\vdots\\
+			\bd{x_N}
+		\end{pmatrix}$, $Y=\begin{pmatrix}
+			y_1\\
+			\vdots\\
+			y_N
+		\end{pmatrix}$ satisfying:
+		\[
+			\arg\min_{\bd{\beta},{c}} \sum_i^N ((\bd{x_i}\bd{\beta}+{c})-y_i)^2 \tag{Least Square}
+		\]\[
+			y=\bd{x}\bd{\beta}+{c} = x_1 \beta_1 + \cdots + x_m \beta_m + {c}
+		\]% given data are:\[
+% 			(y_1, \bd{x_1}) = (y_1, x_{11},x_{12},\cdots,x_{1m}), (y_2,\bd{x_2}), \cdots , (y_N,\bd{x_N})
+% 		\]
+	\end{block}
+	Note: given points -- $(y_1, \bd{x_1}) = (y_1, x_{11},x_{12},\cdots,x_{1m})$, $(y_2,\bd{x_2}), \cdots , (y_N,\bd{x_N})$ -- are not variables. Our object is to find $\bd{\beta^\ast}, {c^\ast}$ (linear equation) from given data $X,Y$.
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{OLS: Solution}
+	Let our object function $f(\beta_1,\cdots,\beta_n,c):=\sum_i^N ( (\bd{x_i}\bd{\beta}+{c})-y_i)^2$. Then FOC is:
+	\[
+		Df_{\bd{\beta},c}(\bd{\beta}^\ast,c^\ast)=\bd{0} \tag{FOC}
+	\]
+	This leads to $m+1$ equations:\[
+		\frac{\p f}{\p \beta_1}(\bd{\beta^\ast},c^\ast) = 2(\bd{x_1}\bd{\beta^\ast}+c^\ast-y_1)x_{11}+2(\bd{x_2}\bd{\beta^\ast}+c^\ast-y_2)x_{21}+\cdots+2(\bd{x_N}\bd{\beta^\ast}+c^\ast-y_N)x_{N1} = 0
+	\]\[
+		\cdots
+	\]\[
+		\frac{\p f}{\p \beta_m}(\bd{\beta^\ast},c^\ast) = 2(\bd{x_1}\bd{\beta^\ast}+c^\ast-y_1)x_{1m}+2(\bd{x_2}\bd{\beta^\ast}+c^\ast-y_2)x_{2m}+\cdots+2(\bd{x_N}\bd{\beta^\ast}+c^\ast-y_N)x_{Nm} = 0
+	\]
+	\[
+			\Rightarrow 2(\bd{x_1}\bd{\beta^\ast}+c^\ast-y_1)\bd{x_1}^T+2(\bd{x_2}\bd{\beta^\ast}+c^\ast-y_2)\bd{x_2}^T+\cdots+2(\bd{x_N}\bd{\beta^\ast}+c^\ast-y_N)\bd{x}_{N}^T = \bd{0}_{m\times 1}
+		\tag{B}\]
+	\[
+		\frac{\p f}{\p c}(\bd{\beta^\ast},c^\ast) = 2(\bd{x_1}\bd{\beta^\ast}+c^\ast-y_1)1+2(\bd{x_2}\bd{\beta^\ast}+c^\ast-y_2)1+\cdots+2(\bd{x_N}\bd{\beta^\ast}+c^\ast-y_N)1 = 0 \tag{C}
+	\]
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{OLS (2)}
+	\[
+		Remember \quad X = \begin{pmatrix}
+			x_{11} & x_{12} & \cdots & x_{1m}\\
+			x_{21} & x_{22} & \cdots & x_{2m}\\
+			\vdots & \vdots & \vdots & \vdots\\
+			x_{N1} & x_{N2} & \cdots & x_{Nm}
+		\end{pmatrix}  = \begin{pmatrix}
+			C_1 & \cdots & C_m
+		\end{pmatrix}=\begin{pmatrix}
+			\bd{x}_1 \\ \bd{x}_2 \\ \vdots \\ \bd{x}_N
+		\end{pmatrix}
+	\]
+	Rearrange FOCs:% $\bd{\beta^\ast}$: \[
+% 		\begin{pmatrix}
+% 			\bd{x}_1^T\bd{\beta^\ast}+c-Y_1 & \cdots & \bd{x}_N^T\bd{\beta^\ast}+c-Y_N
+% 		\end{pmatrix}\begin{pmatrix}
+% 		\bd{x}_1^T\\\vdots\\\bd{x}_N^T
+% 		\end{pmatrix}=\bd{0}_{m\times 1}
+% 	\]
+	\[
+		\begin{pmatrix}
+			\bd{x_1}^T & \bd{x_2}^T & \cdots & \bd{x_N}^T
+		\end{pmatrix}\begin{pmatrix}
+			\bd{x_1}\bd{\beta^\ast}+c^\ast-y_1 \\\vdots\\\bd{x_N}\bd{\beta^\ast}+c^\ast-y_N
+		\end{pmatrix} = X^T (X\bd{\beta^\ast}+\bd{1}_{N\times 1}c^\ast-Y)=\bd{0}_{m\times 1} \tag{B2}
+	\]\[
+		c^\ast = \frac{1}{N}\begin{pmatrix}
+			1 & 1 & \cdots & 1
+		\end{pmatrix}\begin{pmatrix}
+			y_1 - \bd{x_1}\bd{\beta^\ast} \\\vdots\\y_N - \bd{x_N}\bd{\beta^\ast}
+		\end{pmatrix}=\frac{1}{N}\bd{1}_{1\times N}(Y-X\bd{\beta^\ast})\tag{C2}
+	\]
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{OLS (3)}
+	From (C2) and (B2),\[
+		X^T\left(X\bd{\beta^\ast}+\bd{1}_{N\times 1}\frac{1}{N}\bd{1}_{1\times N}(Y-X\bd{\beta^\ast})-Y\right) = \bd{0}_{m\times 1}\tag{D}
+	\]
+	Rearrange (D) with regard to $\bd{\beta^\ast}$ yields:
+	\[
+		X^T(X - \frac{1}{N}\bd{1}_{N\times 1}\bd{1}_{1\times N}X)\bd{\beta^\ast}= X^T(I_N-\frac{1}{N}\bd{1}_{N\times 1}\bd{1}_{1\times N})Y
+	\]
+	Let $\bd{1}_{N\times 1}\bd{1}_{1\times N} = \bd{1}_N$. ($N\times N$ matrix with all elements are $1$)
+	\[
+		\bd{\beta^\ast} = \left(X^T \left(X-\frac{1}{N}\bd{1}_{N} X\right)\right)^{-1}\left(X^T \left(Y - \frac{1}{N}\bd{1}_N Y\right)\right)
+	\]\[
+		=\left(X^T\left(I_N - \frac{1}{N}\bd{1}_N\right)X\right)^{-1}\left(X^T\left(I_N - \frac{1}{N}\bd{1}_N\right)Y\right)
+	\]
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{OLS (4)}
+	\begin{block}
+		{Sample Mean $\bar X, \bar Y$}
+		\[
+			\frac{1}{N}\bd{1}_N X = \frac{1}{N}\begin{pmatrix}
+				1  & \cdots & 1\\
+				1  & \cdots & 1\\
+				\vdots & \vdots & \vdots\\
+				1 & \cdots & 1
+			\end{pmatrix}\begin{pmatrix}
+			x_{11} & \cdots & x_{1m}\\
+			x_{21} & \cdots & x_{2m}\\
+			\vdots & \vdots & \vdots\\
+			x_{N1} & \cdots & x_{Nm}
+		\end{pmatrix} = \begin{pmatrix}
+			\bar{\bd{x}}_1 & \cdots & \bar{\bd{x}}_m\\
+			\bar{\bd{x}}_1 & \cdots & \bar{\bd{x}}_m\\
+			\cdots\\
+			\bar{\bd{x}}_1 & \cdots & \bar{\bd{x}}_m\\
+		\end{pmatrix}= \bar{X}
+		\]
+		\[
+			\frac{1}{N}\bd{1}_N Y = \frac{1}{N}\begin{pmatrix}
+				1 & 1 & \cdots & 1\\
+				\vdots & \vdots & \vdots & \vdots\\
+				1 & 1 & \cdots & 1
+			\end{pmatrix}\begin{pmatrix}
+			y_1 \\
+			\vdots\\
+			y_N
+		\end{pmatrix} = \begin{pmatrix}
+			\bar{y}\\
+			\vdots\\
+			\bar{y}
+		\end{pmatrix}=\bar{Y}
+		\]
+		Here $\bar{\bd{x}}_j$, $\bar{y}$ means sample mean of $x_{ij}$, $y_i$\[
+			\bar{\bd{x}}_j := \frac{1}{N}\sum_i^N x_{ij}, \quad \bar{y}:=\frac{1}{N}\sum_i^N {y_i}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{OLS (5)}
+	Therefore, $\bd{\beta^\ast}$ is:
+	\[
+		\bd{\beta^\ast} = (X^T(X-\bar X))^{-1}X^T(Y-\bar Y)
+	\] Note1: If $N\rightarrow \infty$, then $I_N - \frac{1}{N}\bd{1}_N \rightarrow I_N$ and\[
+			\beta^\ast \rightarrow (X^T X)^{-1}X^T Y
+		\]
+		% This implies that $c$ becomes trivial as size of data ($N$) increasing
+		
+		Note2: We should check SOC: whether $H=D^2f_{\bd{\beta},c}(\bd{\beta^\ast},c^\ast)$ is PD or not.  Our object function has quadratic form with positive sign with regard to $\bd{\beta},c$ \uline{when $\bd{x_j}$ is independent with each other} and this means $f$ is PD (when $\bd{x_j}$ is independent with each other: covariance with other variables are 0).
+		
+		Note3: Some researchers denote $X^T$ by $X^\prime$
+\end{frame}
+%--- Next Frame ---%
+
+% section economic_applications (end)
+
+\end{document}
+
