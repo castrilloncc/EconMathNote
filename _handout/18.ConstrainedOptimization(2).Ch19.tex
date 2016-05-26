@@ -1,0 +1,255 @@
+% \documentclass[a4paper,11pt]{article}
+% \usepackage[hyperref]{beamerarticle}
+\documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\bd}{\mathbf}
+\newcommand{\p}{\partial}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Constrained Optimization (II)}
+\subtitle{Ch.19}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\begin{frame}[t]{Main Topics}
+	\begin{block}
+		{Three Aspects of the Lagrangian Approach}
+		\begin{enumerate}
+			\item \uline{Sensitivity} of the solution to changes in the parameters
+			\item \uline{SOC}s
+			\item \uline{CQ}s
+		\end{enumerate}
+	\end{block}
+	Note: \begin{itemize}
+		\item To analyze the sensitivity, we should (1) get $\bd{x^\ast}$, the solution of the optimization problem when parameters $\bd{a}$ are given. And then, we should (2) see the solution $\bd{x^\ast}$ as the function of the parameters. 
+	\item You should be able to distinguish between variables ($e.g.,$ $\bd{x}$, $\bd{\mu}$) and parameters ($e.g.,$ $\bd{a}$). To distinguish explicitly, we denote a function $f$ of variables $\bd{x}$ and parameters $\bd{a}$ by:\[
+		f(\bd{x};\bd{a})
+	\]
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\section{The Meaning of The Multiplier} % (fold)
+\label{sec:the_meaning_of_the_multiplier}
+\begin{frame}[t]{Multiplier $\mu$}
+	Think about the solution of the optimization problem in terms of a parameter $a$, the level of the equality constraint.
+	\begin{thm}
+		[19.1] Let $f$, $h$ be $C^1$ functions of 2 vars. For any fixed $a$ (parameter), let $(x_1^\ast(a),x_2^\ast(a))$ be the solution of max(min)imization problem $\arg\max_{\bd{x}} f(\bd{x})\quad s.t.\quad h(\bd{x})=a$ with corresponding multiplier $\mu^\ast(a)$
+		Suppose (1) $\bd{x}^\ast, \mu^\ast$ are $C^1$ functions of $a$ and (2) NDCQ holds at $(\bd{x^\ast}(a),\mu^\ast(a))$. Then, \[
+			\mu^\ast(a) = \frac{d}{da} f(\bd{x}^\ast(a);a) = \frac{d}{da}f^\ast(a)
+		\]
+	\end{thm}
+	In this view, $f^\ast(a):= f(\bd{x}^\ast(a);a)$, $i.e.,$ the function of optimized value with regard to $a$, and $\mu^\ast(a)$ is the slope of the $f^\ast$: changes in maximum value ($f^\ast(a)$) in terms of $a$
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Generalization}
+	\begin{thm}
+		[19.2] Let $f$, $\bd{H}$ be $C^1$ functions of $n$ vars. For any fixed $\bd{a}\in\bb{R}^m$ (parameters), let $(\bd{x}^\ast(\bd{a}))$ be the solution of max(min)imization problem \[
+			\arg\max_{\bd{x}} f(\bd{x})\quad s.t.\quad \bd{H}(\bd{x})=\bd{a}
+		\] with corresponding multiplier $\bd{\mu}^\ast(\bd{a})=(\mu_1^\ast(\bd{a}),\cdots,\mu_m^\ast(\bd{a}))$
+		Suppose (1) $\bd{x}^\ast, \bd{\mu}^\ast$ are $C^1$ functions of $\bd{a}$ and (2) NDCQ holds at $(\bd{x^\ast}(\bd{a}),\bd{\mu}^\ast(\bd{a}))$. Then, \[
+			\mu^\ast(\bd{a}) = D f_{\bd{a}}(\bd{x}^\ast(\bd{a});\bd{a})
+			= Df_{\bd{a}}^\ast (\bd{a})
+		\]
+	\end{thm}
+	Geographical Explanation: \[
+		\arg\max_{\bd{x}} (-x_1^2 - x_2^2) \quad s.t. \quad x_1 + x_2 = a
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+
+\begin{frame}[t]{Inequality Constraints}
+	\begin{thm}
+		[19.3] Let $\bd{a}^\ast\in\bb{R}^k$. Consider the max(min)imization problem\[
+			\arg\max_{\bd{x}}f(\bd{x}) \quad s.t.\quad \bd{G}(\bd{x})\le \bd{a}
+		\]
+		Let $\bd{x}^\ast(\bd{a}^\ast)$ be the solution of above problem, and let $\bd{\lambda}^\ast(\bd{a}^\ast)=(\lambda_1^\ast(\bd{a}^\ast),\cdots,\lambda_k^\ast(\bd{a}^\ast))$ be the corresponding Lagrange multipliers. Suppose $n+k$ functions $\bd{x}^\ast(\bd{a})$ and  $\bd{\lambda}^\ast(\bd{a})$ are differentiable around $\bd{a}^\ast$ and NDCQ holds at $\bd{a}^\ast$. Then, \[
+			\bd{\lambda({\bd{a}^\ast})^\ast} = Df_{\bd{a}}(\bd{x}(\bd{a}^\ast);\bd{a}^\ast)=Df_{\bd{a}}^\ast(\bd{a}^\ast)
+		\]
+	\end{thm}
+	When $\bd{x}^\ast$ is interior solution, $\lambda^\ast(\bd{a^\ast})=Df_{\bd{a}}^\ast(\bd{a^\ast})=0$. When $f$ is a profit function, $\lambda_j^\ast(\bd{a})$ can be interpreted as the \uline{shadow price} of input $j$. Geographical Explanation: \[
+		\arg\max_{\bd{x}} (-x_1^2 - x_2^2) \quad s.t. \quad x_1 + x_2 \le  a
+	\]
+\end{frame}
+%--- Next Frame ---%
+% section the_meaning_of_the_multiplier (end)
+
+\section{Envelope Theorems} % (fold)
+\label{sec:envelope_theorems}
+\begin{frame}[t]{Envelope Theorems: Unconstrained Problems}
+	\begin{thm}
+		[19.4] Let $f(\bd{x}:a)$ be a $C^1$ function of $\bd{x}\in\bb{R}^n$ and scalar $a$. For a given parameter $a$, consider the unconstrained max(min)imization problem\[
+			\arg\max_\bd{x} f(\bd{x};a) 
+		\] And let $\bd{x^\ast}(a)$ be a solution of above problem. Suppose that $\bd{x^\ast}(a)$ is a $C^1$ function of $a$. Then, \[
+			\frac{d}{da} f(\bd{x^\ast}(a);a) = \frac{\p}{\p a}f(\bd{x^\ast}(a);a)=\frac{\p}{\p a}f^\ast(a)
+		\]
+	\end{thm}
+	Proof: From chain rule and FOC of unconstrained optimization problem\[
+		\frac{d}{da} f(\bd{x^\ast}(a);a) = \cancelto{0:FOC}{Df_{\bd{x}}(\bd{x^\ast}(a);a)}\frac{d\bd{x^\ast}}{da}(a)+\frac{\p f}{\p a}(\bd{x^\ast}(a);a)\cancelto{1}{\frac{da}{da}}
+	\]
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Envelope Theormes: Constrained Problems}
+	\begin{thm}
+		[19.5] Let $f, \bd{H}=(H_1,\cdots,H_k)$ be $C^1$ functions of $\bd{x}\in\bb{R}^n$. Let $\bd{x^\ast}(a)$ denote the solution of the max(min)imization problem for any fixed parameter $a$:\[
+			\arg\max_{\bd{x}} f(\bd{x};a) \quad s.t. \quad \bd{H}(\bd{x};a)=0
+		\]
+		Suppose that $\bd{x^\ast}(a)$ and the Lagrange multipliers $\bd{\mu^\ast}(a)$ are $C^1$ functions of $a$ and that the NDCQ holds. Then, \[
+			\frac{d}{da} f(\bd{x^\ast}(a);a) = \frac{\p}{\p a}L(\bd{x^\ast}(a),\bd{\mu^\ast}(a);a)=\frac{\p}{\p a}L^\ast(a)
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section envelope_theorems (end)
+
+\section{Second Order Conditions} % (fold)
+\label{sec:second_order_conditions}
+\begin{frame}[t]{Strict Local Equality Constrained Max(Min)}
+	\begin{thm}
+		[19.6] Let $f,\bd{H}$ be $C^2$ functions on $\bd{x}\in\bb{R}^n$. Consider the equality constrained max(min)imization problem\[
+			\arg\max_{\bd{x}} f(\bd{x}) \quad s.t. \quad \bd{H}(x)=\bd{c}
+		\] 
+		Let $L := f(\bd{x}) + \bd{\mu}(\bd{c}-\bd{H})$ and suppose that
+		\begin{enumerate}
+			\item $\bd{H}(\bd{x^\ast})=\bd{c}$ (Satisfies constraint)
+			\item $DL_{\bd{x},\bd{\mu}}(\bd{x^\ast},\bd{\mu^\ast})=\bd{0}$ (Satisfies FOC)
+			\item Hession of $L=D^2_{\bd{x}}L(\bd{x^\ast,\mu^\ast})$ is ND on the linear constraint set $\{\bd{v}:D\bd{H}(\bd{x^\ast})\bd{v}=\bd{0}\}$ (Satisfies Sufficient SOC)
+		\end{enumerate}
+		Then, $\bd{x^\ast}$ is a \uline{strict local constrained max(min)} of $f$ on the constrainted set
+	\end{thm}
+	% Note:
+	% \begin{itemize}
+	% 	\item For minimization problem, use $\arg\min$, PD instead of $\arg\max$ and ND.
+	% 	\item
+	% \end{itemize}
+	$\bd{v}$ is the tangent vector on the constraint set around $\bd{x^\ast}$. Proof: See Ch.30
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Calculation Procedure}
+	\begin{block}
+		{Sufficient SOC: Calculation Procedure}
+		Suppose $\bd{x}\in{\bb{R}^n}$, $\bd{H}\in\bb{R}^m$, and NCDQ holds.
+		\begin{enumerate}
+			\item Form a Lagrangian function $L$\[
+				L:= f(\bd{x}) + \bd{\mu}(\bd{c}-\bd{H})
+			\]
+			\item Get points $\bd{x^\ast,\mu^\ast}$ satisfy FOCs
+			\item Make a bodered Hessian\[
+				H:=D^2L_{\bd{\mu,x}}(\bd{x^\ast,\mu^\ast})
+				=\begin{pmatrix}
+					\bd{0}&D\bd{H}_{\bd{x}}(\bd{x^\ast})\\
+					D\bd{H}_{\bd{x}}(\bd{x^\ast})^T& D^2L_{\bd{x}}(\bd{x^\ast,\mu^\ast})
+				\end{pmatrix}
+			\]
+			\item If $H$ is PD, then $\bd{x^\ast}$ is strict local min. If ND, $\bd{x^\ast}$ is strict local max.
+			\begin{enumerate}[(a)]
+				\item If ${\rm sign}(\det H)={\rm sign}((-1)^m)$ and all $n-m$ LPMs have same sign, $H$ is \uline{PD} on the constraint set
+				\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-m$ LPMs alternates in sign, $H$ is \uline{ND} on the constraint set 
+			\end{enumerate}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Sufficient SOC: Mixed Constraints}
+	\begin{thm}
+		[19.8] Let $f,\bd{H}\in\bb{R}^m,\bd{G}\in\bb{R}^k$ be $C^2$ functions on $\bd{x}\in\bb{R}^n$. Consider the mixed constrained max(min)imization problem $\arg\max_{\bd{x}} f(\bd{x})\quad s.t.\quad \bd{H}(\bd{x})=\bd{c} \land \bd{G}(\bd{x})\le\bd{b}$. 
+		\begin{enumerate}
+			\item Form the Lagrangian function $L$\[
+				L:=f(\bd{x}) + \bd{\mu}(\bd{c}-\bd{H}(\bd{x})) + \bd{\lambda}(\bd{b}-\bd{G}(\bd{x}))
+			\]
+			\item Suppose $\exists \bd{x^\ast,\mu^\ast,\lambda^\ast}$ satisfying FOCs (Theorem 18.5)
+			\item For convenience, suppose $\bd{G}_E:=(G_1,\cdots,G_e)$ are binding at $\bd{x^\ast}$ and the others $\bd{G}_{-E}:=(G_{e+1},\cdots,G_k)$ are not binding. Let $\lambda_E$ be the corresponding multiplier of $\bd{G}_E$. Then if the bordered Hessian $D^2L_{\bd{\lambda_E,\mu,x}}(\bd{\lambda_E^\ast,\mu^\ast,x^\ast})$ is PD(ND), $\bd{x^\ast}$ is a strict local mixed constrained max(min) of $f$.
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Sufficient SOC}
+	\begin{block}
+		{Bordered Hessian (Mixed Constraints)}
+		\[
+			H = D^2L_{\bd{\lambda_E,\mu,x}}(\bd{\lambda_E^\ast,\mu^\ast,x^\ast}) = \left.\begin{pmatrix}
+				\bd{0}&\bd{0}&D\bd{G_E}_{\bd{x}}\\
+				\bd{0}&\bd{0}&D\bd{H}_{\bd{x}}\\
+				D\bd{G_E}_{\bd{x}}^T & D\bd{H}_{\bd{x}}^T & D^2L_{\bd{x}}
+			\end{pmatrix}\right\vert_{(\bd{\lambda_E,\mu,x)=(\lambda_E^\ast,\mu^\ast,x^\ast})}
+		\]
+		Let $F_{ab} := \frac{\p}{\p a}\frac{\p}{\p b}F$. Then 
+		\[
+			H = \left.\begin{pmatrix}
+				\cancelto{\bd{0}}{L_{\lambda_E\lambda_E}}&\cancelto{\bd{0}}{L_{\lambda_E\mu}}&\cancelto{D\bd{G_E}_{\bd{x}}}{L_{\lambda\bd{x}}}\\
+				\cancelto{\bd{0}}{L_{\mu\lambda_E}}& \cancelto{\bd{0}}{L_{\mu\mu}} & \cancelto{D\bd{H}_{\bd{x}}}{L_{\mu\bd{x}}}\\
+				\cancelto{D\bd{G_E}_{\bd{x}}^T }{L_{\bd{x}\lambda_E}}& \cancelto{D\bd{H}_{\bd{x}}^T}{L_{\bd{x}\mu}} & L_{\bd{x x}}
+			\end{pmatrix}\right\vert_{(\bd{\lambda_E,\mu,x)=(\lambda_E^\ast,\mu^\ast,x^\ast})}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Deteriminig Definiteness of Bordered Hessian (Mixed Constraints)}
+	\begin{block}{Determining Definiteness}
+		\begin{enumerate}[(a)]
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^(m+e))$ and all $n-(m+e)$ LPMs have same sign, $H$ is \uline{PD} on the constraint set
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-(m+e)$ LPMs alternates in sign, $H$ is \uline{ND} on the constraint set 
+		\end{enumerate}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section second_order_conditions (end)
+
+\section{Smooth Dependence of the Parameters} % (fold)
+\label{sec:smooth_dependence_of_the_parameters}
+
+%--- Next Frame ---%
+% section smooth_dependence_of_the_parameters (end)
+
+\section{Constraint Qualifications} % (fold)
+\label{sec:constraint_qualifications}
+
+% section constraint_qualifications (end)
+
+\section{Proofs of the First Order Conditions} % (fold)
+\label{sec:proofs_of_the_first_order_conditions}
+
+% section proofs_of_the_first_order_conditions (end)
+
+\end{document}
+
