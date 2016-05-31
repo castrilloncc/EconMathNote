@@ -1,0 +1,422 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+% \documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\bd}{\mathbf}
+\newcommand{\p}{\partial}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Eigenvalues and Eigenvectors (1)}
+\subtitle{Ch.23}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\section{Definitions and Examples} % (fold)
+\label{sec:definitions_and_examples}
+\begin{frame}[t]{Eigenvalues}
+	\begin{defn}
+		[Eigenvalue] Let $A\in M_n$. A scalar $r$ is an \uline{eignevalue} of $A$ iff:
+		\[
+			\det(A-rI)=0
+		\]
+	\end{defn}
+	\begin{thm}
+		[23.1] The diagonal entries $a_{ii}$ of a diagonal matrix $A$ are eigenvalues of $A$.
+	\end{thm}
+	\begin{thm}
+		[23.2] A matrix $A\in M_n$ is singular iff 0 is an eigenvalue of $A$. 
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Characteristic Polynomial}
+	\begin{defn}
+		[Characteristic Polynomial] An $P_A(r)$, the $n$th order polynomial of variable $r$ is an polynomial of $A\in M_n$ when:\[
+			P_A(r)=\det(A-rI) 
+		\]
+		$r$ is eigenvalue of $A$ if $P_A(r)=0$
+	\end{defn}
+	For general $2\times 2$ matrix $A = \begin{pmatrix}
+		a & b\\c&d
+	\end{pmatrix}$, 
+	\[
+		P_A(r) = \det \begin{pmatrix}
+			a-r & b \\
+			c & d-r
+		\end{pmatrix} = r^2 - (a+d)r+ad-bc
+	\]
+	$n\times n$ matrices can have at most $n$ eigenvalues
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Eigenvectors}
+	\begin{defn}
+		[Eigenvectors] $\bd{v}$ is an eigenvector of $A$ if \[
+			\det(A-rI)=0 \quad \land \quad (A-rI)\bd{v}=\bd{0}
+		\]or, \[
+			\det(A-rI)=0 \quad \land \quad A\bd{v} = r\bd{v}
+		\]
+	\end{defn}
+	Note1: Get the simplest nonzero vector from eigenspace of $A$ with respect to each eigenvalue
+	 
+	Note2: $A-rI\in M_n$ is singular iff $\exists \bd{v}\neq \bd{0}$  s.t. $(A-rI)\bd{v}=\bd{0}$ (See Ch.8)
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Th23.3}
+	\begin{thm}
+		[23.3] Let $A\in M_n$, and $r\in\bb{R}$. Then, following statements are equivalent:
+		\begin{enumerate}
+			\item $A-rI$ is singular
+			\item $\det(A-rI)=0$
+			\item $\exists \bd{v}\neq\bd{0}$ s.t. $(A-rI)\bd{v}-\bd{0}$
+			\item $A\bd{v}=r\bd{v}$ and $\bd{v}\neq \bd{0}$
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Examples}
+	\begin{block}
+		{Ex 23.6} Find the eigenvalues and eigenvectors of \[
+			A = \begin{pmatrix}
+				1&0&2\\
+				0&5&0\\
+				3&0&2
+			\end{pmatrix}
+		\]
+		\begin{enumerate}[Step 1)]
+			\item Get eigenvalues from characteristic polynomials
+			\[
+				\det (A-rI) = 0
+			\]
+			\item Get eigenvectors from corresponding eigenvalues $r=5,4,-1$ by solving $(A-rI)\bd{v}=0$
+			\begin{itemize}
+				\item $r=5$
+				\item $r=4$
+				\item $r=-1$
+			\end{itemize}
+		\end{enumerate}
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section definitions_and_examples (end)
+
+\section{Solving Linear Difference Equations} % (fold)
+\label{sec:solving_linear_difference_equations}
+\begin{frame}[t]{One Dimensional Linear Difference Equations}
+	\begin{block}
+		{One-Dimensional Equations}
+		\[
+			y_{t+1} = \bar{a}y_t, \quad t\in \bb{N}+\{0\}
+		\]
+		\[
+			\Rightarrow\quad y_n = \bar{a}^n \overline{y_0}
+		\]
+	\end{block}
+	Note: The simplest dynamic -- time dependent -- model (cf. static model is time-invariant). In general, dynamic model is more difficult to solve.
+	
+	Above system can extend to general $n$-dimensional linear difference equations\[
+		\bd{z}_{t+1}=A\bd{z}_t, \quad \bd{z}_t\in \bb{R}^n,\quad A\in M_n
+	\]
+	However, solution is similar only if system is uncoupled. If the system is coupled, transform it to uncoupled system using eigenvalues and eigenvectors. 
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Two Dimensional Linear Difference Equations}
+	\begin{block}
+		{Two-Dimensional Equations}
+		\[
+			\bd{z}_{t+1} = A\bd{z}_{t}
+		\]When $\bd{z_t}=\begin{pmatrix}
+			x_t\\y_t
+		\end{pmatrix}$ and $A=\begin{pmatrix}
+			a&b\\c&d
+		\end{pmatrix}$,
+		\begin{align*}
+			x_{t+1} &= \bar{a}x_t + \bar{b}y_t\\
+			y_{t+1} &= \bar{c}x_t + \bar{d}y_t
+		\end{align*}
+	\end{block}
+	\begin{defn}
+		[Coupled, Uncoupled] When $b=c=0$, above system is \uline{uncoupled}. Otherwise, above system is \uline{coupled}. When $b=c=0$, \[
+			\bd{z}_n = A^n \bd{z}_0 = \begin{pmatrix}
+				a^n & 0 \\ 
+				0 & d^n
+			\end{pmatrix} \bd{z}_0 
+		\]
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{The Leslie Population Model}
+	\begin{block}
+		{Leslie Mode: Linear Population Dynamics} 
+		\[
+			\begin{pmatrix}
+				x_{t+1}\\
+				y_{t+1}
+			\end{pmatrix} = \begin{pmatrix}
+				b_1 & b_2\\
+				1-d_1 & 1-d_2
+			\end{pmatrix}\begin{pmatrix}
+				x_t\\
+				y_t
+			\end{pmatrix}
+		\]
+		\begin{itemize}
+			\item $b_i$: birth rate of agents in the $i$th period
+			\item $d_i$: death rate of agents in the $i$th period
+			\item Agents live at most 2-periods. This means $d_2=1$
+			\item $x_t$: the number of $0$-period old population
+			\item $y_t$: the number of $1$-period old population
+		\end{itemize}
+	\end{block}
+	Ex23.7: $b_1=1, b_2=4, d_1=0.5$
+	\begin{itemize}
+		\item [M1] Transform to uncoupled system by ERO
+		\item [M2] Find $P$ s.t. $P^{-1}AP$ is a diagonal matrix (diagonalize)
+	\end{itemize}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{General Two-Dimensional Systems}
+	\begin{block}
+		{General Linear Difference Equation}
+		\[
+			\bd{z}_{t+1}=A\bd{z}_t
+		\]
+		Let $\bd{z}_t=P\bd{Z}_t$ or $\bd{Z}_t=P^{-1}\bd{z}_t$. Then,
+		\[
+			\bd{Z}_{t+1} = P^{-1}AP\bd{Z}_t
+		\]
+		Let $r_1,r_2$ be eigenvalues of $A$ and $\bd{v}_1, \bd{v}_2$ be corresponding eigenvectors ($2\times 1$ matrix). If $P=\begin{pmatrix}
+			\bd{v}_1 & \bd{v}_2
+		\end{pmatrix}$, \[
+			A\begin{pmatrix}
+			\bd{v}_1 & \bd{v}_2
+		\end{pmatrix} = \begin{pmatrix}
+			\bd{v}_1 & \bd{v}_2
+		\end{pmatrix} \begin{pmatrix}
+			r_1 & 0\\
+			0 & r_2
+		\end{pmatrix} \quad\iff\quad A\bd{v}_i = r_i\bd{v}_i\quad\forall i \tag{Th23.3}
+		\]
+		This leads to: \[
+			P^{-1}AP = \begin{pmatrix}
+			r_1 & 0\\
+			0 & r_2
+		\end{pmatrix}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{General $k$-Dimensional Systems}
+	\begin{thm}
+		[23.4] Let $A$ be $k\times k$ matrix. Let $r_i$ be $k$ eigenvalues of $A$, and $\bd{v}_i$ be the corresponding eigenvectors. Form the matrix\[
+			P = \begin{pmatrix}
+				\bd{v}_1 & \cdots & \bd{v}_k
+			\end{pmatrix}
+		\]If $\exists P^{-1}$, \[
+			P^{-1}AP = \begin{pmatrix}
+				r_1 & 0 & \cdots & 0\\
+				0 & r_2 & \cdots & 0\\
+				\vdots & \vdots & \vdots & \vdots\\
+				0 & 0 & \cdots & r_k
+			\end{pmatrix}
+		\]
+	\end{thm}
+	Note: $\exists P^{-1}$ means that $\bd{v}_i$ s are linearly independent
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{The Powers of Diagonalized Matrix}
+	\begin{thm}
+		[23.7]
+		Let $A$ be a $k\times k$ matrix. Suppose that there is a nonsingular (invertible) matrix $P$ s.t. \[
+			P^{-1}AP = \begin{pmatrix}
+				r_1 & 0 & \cdots & 0\\
+				0 & r_2 & \cdots & 0\\
+				\vdots & \vdots & \vdots & \vdots\\
+				0 & 0 & \cdots & r_k
+			\end{pmatrix}=D \tag{Jordan Canonical Form}
+		\] Then, \[
+			A^n = P D^n P^{-1}
+		\] And the solution of the corresponding system of difference equations $\bd{z}_{t+1}=A\bd{z}_t$ with given initial vector $\bd{z}_0$ is:
+		\[
+			\bd{z}_n = P D^n P^{-1} \bd{z}_0 = P \begin{pmatrix}
+				r_1^n & 0 & \cdots & 0\\
+				0 & r_2^n & \cdots & 0\\
+				\vdots & \vdots & \vdots & \vdots\\
+				0 & 0 & \cdots & r_k^n
+			\end{pmatrix} P^{-1} \bd{z}_0
+		\]
+		
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Dynamic Stability}
+	\begin{defn}
+		[Asymptotic Stability] $\bd{z}_t$ is \uline{asymptotically stable} if:\[
+			\lim_{n\rightarrow\infty} \bd{z}_n = \bd{0}
+		\]
+	\end{defn}
+	\begin{thm}
+		[23.8] If $A\in M_k$ has $k$ distinct real eigenvalues $r_i$, every solution of the general system of linear difference equation is asymptotically stable iff $|r_i|<1$ $\forall i$\[
+			\bd{z}_{t+1}=A\bd{z}_t\quad\land\quad\lim_{n\rightarrow\infty} \bd{z}_n = \bd{0} \quad\iff\quad |r_i|<1 \quad \forall i
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section solving_linear_difference_equations (end)
+
+\section{Properties of Eigenvalues} % (fold)
+\label{sec:properties_of_eigenvalues}
+\begin{frame}[t]{Properties of Eigenvalues}
+	\begin{defn}
+		[Trace] Let $a_{ii}$ be $i,i$th element of $A\in M_k$. \[
+			trace A := \sum_i^k a_{ii}
+		\]
+	\end{defn}
+	\begin{thm}
+		[23.9] Let $A\in M_k$ with eigenvalues $r_1,\cdots,r_k$. Then, 
+		\begin{enumerate}
+			\item $\sum_i^k r_i = trace A$
+			\item $\prod_i^k r_i = \det A$
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section properties_of_eigenvalues (end)
+
+\section{Repeated Eigenvalues} % (fold)
+\label{sec:repeated_eigenvalues}
+\begin{frame}[t]{Repeated Eigenvalues}
+	\begin{defn}
+		[Defective, Nondiagonalizable]
+		$A\in M_k$ is \uline{defective} (or nondiaglonalizable) if $\nexists P$ such that diagonalize $A$
+	\end{defn}
+	\begin{defn}
+		[Generalized Eigenvector] Let $r^\ast$ be an eigenvalue of the matrix $A$. A vector $\bd{v}\neq\bd{0}$ such that $(A-r^\ast I)\bd{v}\neq\bd{0}$ and $(A-\r^\ast I)^m\bd{v}-\bd{0}$ for some integer $m>1$ is \uline{generalized eigenvector} for $A$ corresponding to $r^\ast$
+	\end{defn}
+
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{When $A\in M_2$}
+	\begin{thm}
+		[23.11] Let $A\in M_2$ with repeated eigenvalues $r^\ast$. Then, 
+		\begin{enumerate}
+			\item $A=r^\ast I$, or
+			\item $A$ has only one independent eigenvector (say $\bd{v}_1$). In this case, there is a generalized eigenvector $\bd{v}_2$ such that $(A-r^\ast I)\bd{v}_2 = \bd{v}_1$. If $P=\begin{pmatrix}
+				\bd{v}_1 & \bd{v}_2
+			\end{pmatrix}$, \[
+				P^{-1}AP = \begin{pmatrix}
+					r^\ast & 1 \\
+					0 & r^\ast
+				\end{pmatrix}
+			\]
+		\end{enumerate}
+	\end{thm}
+	\begin{thm}
+		[23.12] If $A$ is the case 2 in theorem 23.11, general solution of the system of difference equations $\bd{z}_{t+1}=A\bd{z}_t$ is: \[
+			\bd{z}_n = (z_{1,0}r^n + nr^{n-1}z_{2,0})\bd{v}_1+r^n z_{2,0}\bd{v}_2
+		\]
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Generalized Eigenvector: Example}
+	\begin{block}{Example: Jordan Canonical Forms}
+		When $A\in M_4$, there are four cases of repeated eigenvectors
+		\begin{enumerate}
+			\item $r_1,r_2,r_3,r_3$ (2 repeated eigenvectors)
+			\item $r_1,r_2,r_2,r_2$ (3 repeated eigenvectors)
+			\item $r_1,r_1,r_1,r_1$ (4 repeated eigenvectors)
+			\item $r_1,r_1,r_2,r_2$ (two 2 repeated eigenvectors)
+		\end{enumerate}
+		\[
+			(1) \begin{pmatrix}
+				r_1 & 0 & 0 & 0\\
+				0 & r_2 & 0 & 0\\
+				0 & 0 & r_3 & 1\\
+				0 & 0 & 0 & r_3
+			\end{pmatrix},\quad (2) \begin{pmatrix}
+				r_1 & 0 & 0 & 0\\
+				0 & r_2 & 1 & 0\\
+				0 & 0 & r_2 & 1\\
+				0 & 0 & 0 & r_2
+			\end{pmatrix},
+		\]\[
+			(3) \begin{pmatrix}
+							r_1 & 1 & 0 & 0\\
+							0 & r_1 & 1 & 0\\
+							0 & 0 & r_1 & 1\\
+							0 & 0 & 0 & r_1
+						\end{pmatrix},\quad (4)\begin{pmatrix}
+							r_1 & 1 & 0 & 0\\
+							0 & r_1 & 0 & 0\\
+							0 & 0 & r_2 & 1\\
+							0 & 0 & 0 & r_2
+						\end{pmatrix}
+		\]
+	\end{block}
+\end{frame}
+%--- Next Frame ---%
+% section repeated_eigenvalues (end)
+
+\section{Complex Eigenvalues and Eigenvectors} % (fold)
+\label{sec:complex_eigenvalues_and_eigenvectors}
+\begin{frame}[t]{Complex Eigenvalues}
+	\begin{thm}
+		[23.13] Let $A\in M_k$ with real entries. Then,
+		\begin{itemize}
+			\item If $r=\alpha+i\beta$ is an eigenvalue of $A$, so is $\bar r = \alpha - i\beta$. 
+			\item If $\bd{u}+i\bd{v}$ is an eigenvector for $r$, then $\bd{u}-i\bd{v}$ is an eigenvector for $\bar r$. 
+			\item If $k$ is odd, $A$ must have at least one real eigenvalue.
+		\end{itemize}
+	\end{thm}
+	If there is no repeated eigenvalues, $A$ is diagonalizable even if $r$ is complex number.
+\end{frame}
+%--- Next Frame ---%
+% section complex_eigenvalues_and_eigenvectors (end)
+
+
+\end{document}
+
