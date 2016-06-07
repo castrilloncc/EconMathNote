@@ -1,0 +1,198 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
+% \documentclass[final]{beamer}
+
+\usepackage{kotex}
+\usepackage{amsfonts,amsmath,xob-amssymb}
+
+\usepackage{amsthm}
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+\usepackage{cancel}
+\usepackage{enumerate}
+
+\mode<presentation>{
+	\usetheme{Madrid}
+	\usecolortheme{default}
+	\usefonttheme{professionalfonts}
+}
+
+\def\b{\boldsymbol}
+
+\mode<article>{
+\usepackage{fullpage}
+}
+\usepackage{ulem}
+
+\newcommand{\bb}{\mathbb}
+\newcommand{\bd}{\mathbf}
+\newcommand{\p}{\partial}
+
+\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+
+\author[조남운]{\mail}
+\title{Eigenvalues and Eigenvectors (1)}
+\subtitle{Ch.23}
+
+\begin{document}
+	
+\maketitle
+
+\mode<presentation>{
+\begin{frame}[t]{Table of Contents}
+	\tableofcontents
+\end{frame}
+%--- Next Frame ---%
+}
+
+\setcounter{section}{5}
+
+\section{Markov Processes} % (fold)
+\label{sec:markov_process}
+\begin{frame}[t]{Terms}
+	\begin{block}
+		{State} In each period $t$, the system is in one and only one of $k$ states $S_1,\cdots,S_k$. 
+	\end{block}
+	\begin{defn}
+		[Stochastic Process]
+		A \uline{stochastic process} is a rule which gives the probability of the state $i$ at the period $t=n+1$ given the probabilities of all previous states ($t=1,2,\cdots,n$)
+	\end{defn}
+	Note: $\bd{x}_t=(x_{1,t},\cdots,x_{k,t})$ is the probabilities of all $k$ possible states at time $t$
+	\begin{defn}
+		[Markov Process] A stochastic process that the probability of state $i$ at $t=n+1$ depends only on what state the system was in at $t=n$ is a \uline{Markov process}. 
+	\end{defn}
+	Note: Markov processes are memoryless. 
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Markov Processes}
+	\begin{defn}
+		[Transition Matrix] $M$ is a \uline{transition matrix} for stochastic process $\bd{x}_t$ if: \[
+			\bd{x}_{t+1} = M \bd{x}_t
+		\]
+		If $\sum_{i} M_{ij} = 1 \quad \forall j$ ($i.e.,$ all column sums are $1$), this process is a Markov process. Here, nonnegative scalar $M_{ij}$ is \uline{transition probabilities} that the process will be in state $i$ at $t=n+1$ if it is in state $j$ at $t=n$
+		
+		If $M_{ij}$, transition probabilities are fixed and independent of time indices $t$, this process is \uline{time-homogeneous} or that $M_{ij}$ are \uline{stationary}.
+	\end{defn}
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Regular Markov Matrix}
+	\begin{defn}
+		[Regular Markov Matrix] $M$ is a \uline{regular Markov matrix} if:
+		\begin{enumerate}
+			\item $\sum_{i} M_{ij} = 1 \quad \forall j$
+			\item $M_{ij}\ge 0\quad \forall i,j$
+			\item $\exists r\in\bb{N}$ $s.t.$ $M^r>0\quad\forall i,j$
+			\item Condition $3$ hold when $r=1$
+		\end{enumerate}
+	\end{defn}
+
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Th23.15}
+	\begin{thm}
+		[23.15] Let $M$ be a regular Markov matrix. Then,
+		\begin{enumerate}
+			\item $1$ is an eigenvalue of $M$ of multiplicity $1$ ($i.e.,$ $1$ is not a repeated root)
+			\item For every other eigenvalue $r$ of $M$, $|r|<1$
+			\item $\bd{w}_1$, Eigenvector for eigenvalue $1$ has strict positive components
+			\item If $\bd{v}_1 = \bd{w}_1/||\bd{w}_1||$, $\bd{v}_1$ is a probability vector and if $\bd{x}_{t+1}=M\bd{x}_t$, \[
+				\lim_{n\rightarrow\infty}\bd{x}_n = \bd{v}_1
+			\]
+		\end{enumerate}
+	\end{thm}
+	Note: example of non-regular Markov process. If $\exists i$ s.t. $M_{ii}=1$, This state $i$ is absorbing state. $I.e.$, once process reach state $i$, this state does not change forever. Therefore, this process will eventually reach one of these states $i$ and then stay there forever.
+\end{frame}
+%--- Next Frame ---%
+% section markov_process (end)
+
+\section{Symmetric Matrices} % (fold)
+\label{sec:symmetric_matrices}
+\begin{frame}[t]{Symmetric Matrices}
+	\begin{block}
+		{Example of Symmetric Matrices in Economics}
+		\begin{itemize}
+			\item (Bordered) Hessians in optimization problem
+			\item Variance-covariance matrices in statistics
+		\end{itemize}
+		Fortunately, symmetric matrices do not have repeated or complex eigenvalues. 
+	\end{block}
+	\begin{defn}
+		[Orthogonal Matrix] A matrix $P$ satisfies the condition $P^{-1}=P^T$, ($i.e.,$ $P^T P = I$) is \uline{orghogonal matrix}.
+	\end{defn}
+	We can find uncoupled system when $A$ is symmetric.
+\end{frame}
+%--- Next Frame ---%
+\begin{frame}[t]{Properties of Symmetric Matrices}
+	\begin{thm}
+		[23.16] Let $A\in M_k$ and $A^T=A$. Then, 
+		\begin{itemize}
+			\item All $k$ roots of $\det{A-rI}=0$ are real numbers. 
+			\item All corresponding eigenvectors $\bd{w}_i$ are orthogonal
+			\item $\exists P$ staisfying:
+			\begin{itemize}
+				\item $\bd{w}_i$s are normalized eigenvectors for each eigenvalues $r_i$: $||\bd{w}_i||=1 \quad\forall i$
+				\item Matrix $\begin{bmatrix}\bd{w}_1&\cdots&\bd{w}_k
+				\end{bmatrix}$ is nonsingular
+				\item $\bd{w}_i\bd{w}_j=0\quad \forall i\neq j$ (orthogonal to each other)
+				\item $P^{-1}=P^T$
+				\item \[
+					P^{-1}AP = P^TAP = \begin{pmatrix}
+						r_1 & 0 & \cdots & 0\\
+						0 & r_2 & \cdots & 0\\
+						\vdots & \vdots & \vdots & \vdots\\
+						0 & 0 & \cdots & r_k
+					\end{pmatrix}
+				\]
+			\end{itemize}
+		\end{itemize}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section symmetric_matrices (end)
+
+\section{Definiteness of Quadratic Forms} % (fold)
+\label{sec:definiteness_of_quadratic_forms}
+\begin{frame}[t]{Quadratic Forms}
+	\begin{block}
+		{Quadratic Forms} Every quadratic form $Q(\bd{x})$ can be represented by symmetric matrix $A$:\[
+			Q(\bd{x}) = \bd{x}^T A \bd{x}\quad\land\quad A^T = A
+		\]Always, we can find uncoupled system by taking $P^T \bd{x}=\begin{bmatrix}
+			\bd{w}_1&\cdots&\bd{w}_k
+		\end{bmatrix}^T\bd{x}$ when $\bd{w}_i$ are correspoinding normalized eigenvalues $r_1,\cdots,r_k$.
+		Let the transformed uncoupled system be $\bd{y}=P^T\bd{x}$. Then, \[
+			Q(\bd{x}) = Q(P\bd{y}) = (P\bd{y})^TA(P\bd{y})= \bd{y}^T (P^TAP)\bd{y}
+		\]
+	\end{block}
+	Note: $\bd{y}$ is a linear chage of coordinates from $\bd{x}$.
+\end{frame}
+%--- Next Frame ---%
+
+\begin{frame}[t]{Definiteness and Eigenvalues}
+	\begin{thm}
+		[23.17] Let $A^T=A\in M_k$ and $r_1,\cdots,r_k$ are eigenvalues of $A$. Then,
+		\begin{enumerate}
+			\item $A$ is PD $\iff$ $r_i>0\quad \forall i$
+			\item $A$ is ND $\iff$ $r_i<0\quad \forall i$
+			\item $A$ is PSD $\iff$ $r_i\ge 0\quad \forall i$
+			\item $A$ is NSD $\iff$ $r_i\le 0\quad \forall i$
+			\item $A$ is ID $\iff$ $\exists i,j \quad s.t. \quad  r_i<0 \land  r_j>0 $
+		\end{enumerate}
+	\end{thm}
+	\begin{thm}
+		[23.18]
+		Let $A^T=A\in M_k$. Then the below statements are equivalent:
+		\begin{enumerate}
+			\item $A$ is PD
+			\item $\exists B\quad s.t. \quad A=B^TB\land \exists B^{-1}$
+			\item $\exists Q\quad s.t. \quad Q^TAQ=I\land\exists Q^{-1}$
+		\end{enumerate}
+	\end{thm}
+\end{frame}
+%--- Next Frame ---%
+% section definiteness_of_quadratic_forms (end)
+\end{document}
+
