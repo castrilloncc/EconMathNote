@@ -108,7 +108,7 @@
 				a_{11}&a_{12}&\cdots& a_{1n}\\
 				a_{21}&a_{22}&\cdots& a_{2n}\\
 				\vdots&\vdots&&\vdots\\
-				a_{mn}&a_{m2}&\cdots& a_{mn}
+				a_{m1}&a_{m2}&\cdots& a_{mn}
 			\end{pmatrix}
 		\]
 	\end{defn}
@@ -176,7 +176,7 @@
 		\[
 			(A\vert \mathbf{b}) \xrightarrow{EROs} (A_{REF}\vert \mathbf{b}^\ast) \xrightarrow{EROs} (A_{RREF}\vert \mathbf{b}^{\ast\ast}) \xrightarrow{EROs} (I|\mathbf{b}^{\ast\ast\ast})
 		\]
-		Solution: If the liear system $Ax=\mathbf{b}$ has an unique solution ($A$ is $m\times n$ matrix), $A_{RREF}=I$ ($m=n$) or, $R_i = I_i$ ($i\le n$) and $R_i = \mathbf{O} $ ($i>n$)
+		Solution: If the linear system $Ax=\mathbf{b}$ has an unique solution ($A$ is $m\times n$ matrix), $A_{RREF}=I$ ($m=n$) or, $R_i = I_i$ ($i\le n$) and $R_i = \mathbf{O} $ ($i>n$)
 	\end{block}
 \end{frame}
 %--- Next Frame ---%
@@ -333,7 +333,7 @@ In systems with many solutions, there exist $C_i$ with no pivot (in our example,
 \begin{frame}[t]{Linear Implicit Function Theorem}
 	\begin{thm}
 		[Linear Implicit Function Theorem]
-		A general linear model with $m$ equations and $n$ knowns can have an unique solution (and suppose $x_i$ are arranged by endogeneity) iff:
+		A general linear model with $m$ equations and $n$ unknowns can have an unique solution (and suppose $x_i$ are arranged by endogeneity) iff:
 		\begin{itemize}
 			\item $x_1,\cdots,x_k$ are endogenous variables
 			\item $x_{k+1},\cdots, x_n$ are exogenous variables ($i.e.$, constant in this system)

@@ -122,15 +122,15 @@
 \begin{frame}[t]{Transpose}
 	\begin{defn}
 		[Transpose]
-		$A^T$ ($n\times m$) is a transpose of $A$ ($m\times n$) if: \[
-			(A^T)_{ij} := A_{ji}\quad \forall i,j
+		$A^\intercal$ ($n\times m$) is a transpose of $A$ ($m\times n$) if: \[
+			(A^\intercal)_{ij} := A_{ji}\quad \forall i,j
 		\]
 	\end{defn}
 	\begin{align*}
-		(A\pm B)^T &= A^T + B^T\\
-		(A^T)^T &= A\\
-		(rA)^T &= r A^T\\
-		(AB)^T &= B^T A^T \tag{Theorem 8.1}
+		(A\pm B)^\intercal &= A^\intercal \pm B^\intercal\\
+		(A^\intercal)^\intercal &= A\\
+		(rA)^\intercal &= r A^\intercal\\
+		(AB)^\intercal &= B^\intercal A^\intercal \tag{Theorem 8.1}
 	\end{align*}
 \end{frame}
 %--- Next Frame ---%
@@ -146,7 +146,7 @@
 			\item $A$ is a \uline{square matrix} if $k=n$
 			\item $A$ is a \uline{column matrix} if $n=1$
 			\item $A$ is a \uline{row matrix} if $k=1$
-			\item $A$ is a \uline{diagonal matrix} if $k=n$ and $a_{ij}=1\quad \forall i\neq j$
+			\item $A$ is a \uline{diagonal matrix} if $k=n$ and $a_{ij}=0\quad \forall i\neq j$
 			\item $A$ is a \uline{scalar matrix} if $A=tI_n$
 			\item $A$ is an \uline{upper-triangular matrix} if $a_{ij}=0\quad\forall i>j$
 			\item $A$ is a \uline{lower-triangular matrix} if $a_{ij}=0\quad\forall i<j$
@@ -159,7 +159,7 @@
 	\begin{defn}
 		[Special Kinds of Matrices (2)]
 		\begin{itemize}
-			\item $A$ is a \uline{symmetric matrix} if $A$ is suqare matrix and $a_{ij}=a_{ji}\quad\forall i,j$. Or, $A^T = A$
+			\item $A$ is a \uline{symmetric matrix} if $A$ is suqare matrix and $a_{ij}=a_{ji}\quad\forall i,j$. Or, $A^\intercal = A$
 			\item $A$ is an \uline{Idempotent matrix} if $AA=A$
 			\item $A$ is a \uline{permutation matrix} if $A$ is the result of $I_n$ with $ERO_1$ (row exchange)
 			\item $A$ is a \uline{nonsingular matrix} if $rank A = \# row = \# column$
@@ -279,7 +279,7 @@
 		[8.10] If $A,B\in M_n$ and $\exists A^{-1}, B^{-1}$,
 		\begin{enumerate}
 			\item $(A^{-1})^{-1}=A$
-			\item $(A^T)^{-1}=(A^{-1})^T$
+			\item $(A^\intercal)^{-1}=(A^{-1})^\intercal$
 			\item $\exists(AB)^{-1} \land (AB)^{-1}=B^{-1}A^{-1}$
 		\end{enumerate}
 	\end{thm}
