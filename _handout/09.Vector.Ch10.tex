@@ -163,11 +163,11 @@
 	\begin{thm}
 		[10.2: Properties of Inner Product]\begin{enumerate}
 			\item $\mathbf{u\bullet v}=\mathbf{v\bullet u}$
-			\item $\mathbf{u\bullet(v+w)}=u\bullet v + u\bullet w$
+			\item $\mathbf{u\bullet(v+w)}=\mathbf{u\bullet v + u\bullet w}$
 			\item $\mathbf{u}\bullet(r\mathbf{v})=r(\mathbf{u\bullet v})=(r\mathbf{u})\bullet\mathbf{v}$
-			\item $\mathbf{u\bullet u}\le 0$
+			\item $\mathbf{u\bullet u}\ge 0$
 			\item $\mathbf{u\bullet u}=0\quad\iff\quad \mathbf{u}=\mathbf{0}$ 
-			\item $\mathbf(u+v)\bullet(u+v)=u\bullet u + 2 u\bullet v + v\bullet v$
+			\item $\mathbf{(u+v)\bullet(u+v)=u\bullet u + 2 u\bullet v + v\bullet v}$
 		\end{enumerate}
 	\end{thm}
 \end{frame}
@@ -266,7 +266,7 @@
 \begin{frame}[t]{Hyperplanes}
 	\begin{defn}
 		[Hyperplane]
-		$\mathbf{x}\in\mathbb{R}^{n-1}$ object in $\mathbb{R}^n$ space is a \uline{hyperplane} with normal vector $\bar{\mathbf{a}}$ if:\[
+		$n-1$ dimensional object in $\mathbb{R}^n$ space is a \uline{hyperplane} with normal vector $\bar{\mathbf{a}}$ if:\[
 			\bar{a}_1 x_1+\bar{a}_2 x_2+\cdots\bar{a}_n x_n = \bar d
 		\]or, \[
 			\bar{\mathbf{a}}\bullet\mathbf{x}=\bar d

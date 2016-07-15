@@ -30,7 +30,7 @@
 \newcommand{\bd}{\mathbf}
 \newcommand{\p}{\partial}
 
-\newcommand{\mail}{\url{econMath.namun+2016sp@gmail.com}}
+\newcommand{\mail}{\url{econMath.namun+2016su@gmail.com}}
 
 \author[조남운]{\mail}
 \title{Calculus of Several Variables}
@@ -137,7 +137,7 @@
 
 \begin{frame}[t]{Geometrical Approach}
 	\begin{block}{Finding Tangent Plane}
-		Let $f:\bb{R}^2\rightarrow \bb{R}$ is differentiable. When finding a tangent plane on $(\bar x_1, \bar x_2)$, we need to get a least two independent vectos: $\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\right)$ (slice $x_2=0$), and $\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2\right)$ (slice $x_1=0$)
+		Let $f:\bb{R}^2\rightarrow \bb{R}$ is differentiable. When finding a tangent plane on $(\bar x_1, \bar x_2)$, we need to get a least two independent vectors: $\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\right)$ (slice $x_2=0$), and $\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2\right)$ (slice $x_1=0$)
 		
 		Then tangent plane is with two parameter $\Delta x_1, \Delta x_2$:\[
 			(\bar {x_1}, \bar{x_2}, f(\bar {\bd x})) + \Delta x_1\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2) \right)+\Delta x_2\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2)\right)
@@ -234,7 +234,7 @@
 % section the_chain_rule (end)
 \section{Directional Derivatives and Gradients} % (fold)
 \label{sec:directional_derivatives_and_gradients}
-\begin{frame}[t]{Deriectional Derivatives and Gradients}
+\begin{frame}[t]{Directional Derivatives and Gradients}
 	\begin{block}
 		{Directional Derivative}Let $\bd x = \overline{\bd x} + t \overline{\bd v}$: line passing $\overline{\bd x}$ with direction $\overline{\bd v}$ and $g(t) = f(\overline{\bd x} + t \overline{\bd v})$. From chain rule I, \[
 			\left.\frac{dg}{dt}\right\vert_{t=0} = \left.\frac{df}{dt}\right\vert_{t=0}= Df_{\bd x} (\overline{\bd x}) \cdot \frac{d\bd x}{dt} = Df_{\bd x} (\overline{\bd x})\cdot\overline{\bd v}
