@@ -1,7 +1,7 @@
-% \documentclass[a4paper,11pt]{article}
-% \usepackage[hyperref]{beamerarticle}
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
 
-\documentclass[final]{beamer}
+% \documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -114,7 +114,7 @@
 %--- Next Frame ---%
 \begin{frame}[t]{Constraint Qualification}
 	\begin{block}
-		{Constraint Qualification (CQ)}If $Dh_{\bd{x}}(\bd{x^\ast})=0$ ($i.e.,$ there is critical point of constraint function),  we cannot use Th 18.1. This consition is \uline{constraint qualification} (CQ). If we have points which can not pass the constraint qualification, we should include these points amont our candidates for a solution to the original constrained maximization problem, along with the critical points of $L$
+		{Constraint Qualification (CQ)}If $Dh_{\bd{x}}(\bd{x^\ast})=0$ ($i.e.,$ there is critical point of constraint function),  we cannot use Th 18.1. This condition is \uline{constraint qualification} (CQ). If we have points which can not pass the constraint qualification, we should include these points among our candidates for a solution to the original constrained maximization problem, along with the critical points of $L$
 	\end{block}
 	\begin{block}
 		{Nondegenerate CQ (NDCQ)} If there are $m$ equality constraints, NDCQ is $DH_{i\bd{x}}(\bd{x^\ast})\neq \bd{0}$ for all $i=1,\cdots,m$ and this means\[
@@ -142,7 +142,7 @@
 
 \end{frame}
 %--- Next Frame ---%
-\begin{frame}[t]{FOCs of General Equlaity Constraints}
+\begin{frame}[t]{FOCs of General Equality Constraints}
 	\begin{thm}
 		[18.2] Let $f,\bd{H}$ be $C^1$ functions of $n$ variables ($i.e.,$ $\bd{x}\in\bb{R}^n$, $\bd{H}:\bb{R}^n\rightarrow\bb{R}^m$). Consider the max(min)imization problem with $m$ equality constraints:\[
 			\arg\max_{\bd{x}} f(\bd{x}) \quad s.t.\quad \bd{H}(\bd{x})=\bar{\bd{a}}
@@ -248,7 +248,7 @@
 			\item $\lambda_i \frac{\p \tilde L}{\p \lambda_i}(\bd{x^\ast,\lambda^\ast})=0$ for all $i$
 		\end{itemize}
 	\end{block}
-	Note: Above lagrangian does not contains $n$ inequality constraints ($\bd{x}\ge 0$)
+	Note: Above lagrangian does not contain $n$ inequality constraints ($\bd{x}\ge 0$)
 \end{frame}
 %--- Next Frame ---%
 % section kuhn_tucker_formulation (end)
