@@ -137,9 +137,9 @@
 
 \begin{frame}[t]{Geometrical Approach}
 	\begin{block}{Finding Tangent Plane}
-		Let $f:\bb{R}^2\rightarrow \bb{R}$ is differentiable. When finding a tangent plane on $(\bar x_1, \bar x_2)$, we need to get a least two independent vectors: $\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\right)$ (slice $x_2=0$), and $\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2\right)$ (slice $x_1=0$)
+		Let $f:\bb{R}^2\rightarrow \bb{R}$ is differentiable. When finding a tangent plane on $(\bar x_1, \bar x_2)$, we need to get at least two independent vectors: $\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\right)$ (slice $x_2=0$), and $\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2\right)$ (slice $x_1=0$)
 		
-		Then tangent plane is with two parameter $\Delta x_1, \Delta x_2$:\[
+		Then the tangent plane with two parameters $\Delta x_1, \Delta x_2$ is:\[
 			(\bar {x_1}, \bar{x_2}, f(\bar {\bd x})) + \Delta x_1\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2) \right)+\Delta x_2\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2)\right)
 		\]\[
 			=\left(\bar{ x_1}+\Delta x_1 , \bar{x_2}+\Delta x_2, f(\bar {\bd x})+ \frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\Delta x_1 + \frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\Delta x_2 \right)
@@ -196,7 +196,7 @@
 	\begin{defn}
 		[regular] A curve $\bd x(t)$ is regular iff $x_i^\prime(t) $ is continuous and $\bd x^\prime(t)\neq \bd{0}\quad \forall t$
 		
-		When $\bd x^\prime(\bar t) = \bd{0}$, this curve have \uline{cusp} at $\bd{x}(\bar t)$
+		When $\bd x^\prime(\bar t) = \bd{0}$, this curve has \uline{cusp} at $\bd{x}(\bar t)$
 	\end{defn}
 	Geometrically, regular curve means smooth curve
 	
@@ -212,7 +212,7 @@
 	\begin{block}
 		{Chain Rule I}
 		Let $g(t)=f(\bd{x}(t))$, $g:\bb{R}\rightarrow\bb{R}$, $f:\bb{R}^n\rightarrow\bb{R}$, $\bd x :\bb{R}\rightarrow\bb{R}^n$. Then, \[
-			\frac{d g}{dt} = Df_{\bd x}(\bd x) \frac {\bd x(t)}{dt} = \frac{\p f}{\p x_1}\frac{dx_1}{dt}+ \cdots +\frac{\p f}{\p x_n}\frac{dx_n}{dt}
+			\frac{d g}{dt} = Df_{\bd x}(\bd x) \frac {d\bd x(t)}{dt} = \frac{\p f}{\p x_1}\frac{dx_1}{dt}+ \cdots +\frac{\p f}{\p x_n}\frac{dx_n}{dt}
 		\]
 	\end{block}
 	\begin{block}
@@ -241,7 +241,7 @@
 		\]This is the derivative of $f$ at $\overline{\bd x}$ in the direction $\overline{\bd v}$, and other notations are $\frac{\p f}{\p \bd v}(\overline{\bd x})$ and $D_{\bd v}f(\overline{\bd x})$
 	\end{block}
 	\begin{thm}
-		[14.2] At any poiont $\bd x\in D$ and $\nabla f \neq 0$, $\nabla f(\bd x)$ points at $x$ into the direction in which $f$ increases most rapidly
+		[14.2] At any point $\bd x\in D$ and $\nabla f \neq 0$, $\nabla f(\bd x)$ points at $x$ into the direction in which $f$ increases most rapidly
 	\end{thm}
 	This theorem will be used for finding normal vector of tangent hyperplane to level set. 
 \end{frame}

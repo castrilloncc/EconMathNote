@@ -1,7 +1,7 @@
-% \documentclass[a4paper,11pt]{article}
-% \usepackage[hyperref]{beamerarticle}
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
 
-\documentclass[final]{beamer}
+% \documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -220,7 +220,7 @@
 
 \begin{frame}[t]{Definiteness of General Bordered Matrix}
 	\begin{thm}
-		[16.4] To deterimne the definiteness of general bordered matrix, Check the signs of the last $n-m$ LPMs of $H$, starting with $LPM_{n+m}(H)$ ($i.e.,$ the determinant of $H$ itself). This means you should check the sign of \[
+		[16.4] To determine the definiteness of general bordered matrix, Check the signs of the last $n-m$ LPMs of $H$, starting with $LPM_{n+m}(H)$ ($i.e.,$ the determinant of $H$ itself). This means you should check the sign of \[
 			\underbrace{LPM_{n+m}(H), LPM_{n+m-1}(H), \cdots,LPM_{n+m-(n-m-1)}}_{n-m\text{ LPMs}}
 		\]
 		\begin{enumerate}[(a)]
@@ -235,7 +235,7 @@
 	\begin{block}
 		{Continued}
 		\begin{enumerate}[(a)]
-			\item [(c)] if (a),(b) is violated by nonzero LPMs, $Q$ is \uline{ID} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is neigher a max nor a min of $Q$ on the constraint set
+			\item [(c)] if (a),(b) is violated by nonzero LPMs, $Q$ is \uline{ID} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is neither a max nor a min of $Q$ on the constraint set
 		\end{enumerate}
 	\end{block}
 	Note: Test for NSD, PSD is much more tedious and trivial in economics $\rightarrow$ SKIP

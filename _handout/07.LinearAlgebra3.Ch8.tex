@@ -159,13 +159,13 @@
 	\begin{defn}
 		[Special Kinds of Matrices (2)]
 		\begin{itemize}
-			\item $A$ is a \uline{symmetric matrix} if $A$ is suqare matrix and $a_{ij}=a_{ji}\quad\forall i,j$. Or, $A^\intercal = A$
+			\item $A$ is a \uline{symmetric matrix} if $A$ is square matrix and $a_{ij}=a_{ji}\quad\forall i,j$. Or, $A^\intercal = A$
 			\item $A$ is an \uline{Idempotent matrix} if $AA=A$
 			\item $A$ is a \uline{permutation matrix} if $A$ is the result of $I_n$ with $ERO_1$ (row exchange)
 			\item $A$ is a \uline{nonsingular matrix} if $rank A = \# row = \# column$
 		\end{itemize}
 	\end{defn}
-	If a coefficient matrix of a system of linear equations is \uline{nonsignular}, this system has only one solution $\mathbf{x} = A^{-1}\mathbf{b}$
+	If a coefficient matrix of a system of linear equations is \uline{nonsingular}, this system has only one solution $\mathbf{x} = A^{-1}\mathbf{b}$
 \end{frame}
 %--- Next Frame ---%
 % section special_kinds_of_matrices (end)
@@ -337,7 +337,7 @@
 		\] and $A_{11}, A_{22}\in M_n$. Then, 
 		\begin{multline*}
 			\exists A_{22}^{-1}\land \exists D^{-1} \land D=A_{11}-A_{12}A_{22}^{-1}A_{21} \\\Rightarrow\quad A^{-1}=\begin{pmatrix}
-				D^{-1}& -D^{-1}A_{12}A_{22}^{P-1}\\
+				D^{-1}& -D^{-1}A_{12}A_{22}^{-1}\\
 				-A_{22}^{-1}A_{21}D^{-1}&A_{22}^{-1}(I+A_{21}D^{-1}A_{12}A_{22}^{-1})
 			\end{pmatrix}
 		\end{multline*}
