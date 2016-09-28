@@ -1,7 +1,7 @@
-% \documentclass[a4paper,11pt]{article}
-% \usepackage[hyperref]{beamerarticle}
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
 
-\documentclass[final]{beamer}
+% \documentclass[final]{beamer}
 
 \usepackage[hangul]{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -96,13 +96,13 @@
 \begin{frame}[t]{Convexity and Concavity}
 	\begin{defn}
 		[Convex (Concave up), Concave (Concave down)]
-		$f$ is convex on $(\bar a, \bar b)$ iff:
+		$f$ is convex on $(\bar \alpha, \bar \beta)$ iff:
 		\[
-			f\left((1-t)\bar a + t \bar b \right)\le (1-t)f(\bar a)+ tf(\bar b),\quad \forall t\in [0,1]
+			f\left((1-t)\bar a + t \bar b \right)\le (1-t)f(\bar a)+ tf(\bar b),\quad \forall t\in [0,1] \quad\forall \bar a, \bar b \in [\alpha,\beta]
 		\]
-		$f$ is concave on $(\bar a, \bar b)$ iff:
+		$f$ is concave on $(\bar \alpha, \bar \beta)$ iff:
 		\[
-			f\left((1-t)\bar a + t \bar b \right) \ge (1-t)f(\bar a)+ tf(\bar b),\quad \forall t\in [0,1]
+			f\left((1-t)\bar a + t \bar b \right) \ge (1-t)f(\bar a)+ tf(\bar b),\quad \forall t\in [0,1] \quad\forall \bar a, \bar b \in [\alpha,\beta]
 		\]
 	\end{defn}
 	\begin{center}
@@ -241,7 +241,7 @@
 		\begin{itemize}
 			\item $f:D\rightarrow\mathbb{R}\in \mathbf{C}^2$
 			\item $f$ is increasing: $f^\prime(L) >0 \forall L\in D$
-			\item $\exists \bar a\ge 0$ s.t. (1) $f^{\prime\prime}(L)>0 \forall L\in[0,\bar a)$ ($i.e.,$ convex on $[0,\bar a)$) and (2) $f^{\prime\prime}(L)<0 \forall L\in(\bar a,\infty]$ ($i.e.,$ concave on $(\bar a,\infty)$)
+			\item $\exists \bar a\ge 0$ s.t. (1) $f^{\prime\prime}(L)>0 \forall L\in[0,\bar a)$ ($i.e.,$ convex on $[0,\bar a)$) and (2) $f^{\prime\prime}(L)<0 \forall L\in(\bar a,\infty)$ ($i.e.,$ concave on $(\bar a,\infty)$)
 			\item Quantity of input (labor) $L$ is the only factor for production
 		\end{itemize}
 	\end{block}
