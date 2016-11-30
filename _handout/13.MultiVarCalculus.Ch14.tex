@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[hyperref]{beamerarticle}
 
-% \documentclass[final]{beamer}
+%\documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -137,12 +137,12 @@
 
 \begin{frame}[t]{Geometrical Approach}
 	\begin{block}{Finding Tangent Plane}
-		Let $f:\bb{R}^2\rightarrow \bb{R}$ is differentiable. When finding a tangent plane on $(\bar x_1, \bar x_2)$, we need to get at least two independent vectors: $\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\right)$ (slice $x_2=0$), and $\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2\right)$ (slice $x_1=0$)
+		Let $f:\bb{R}^2\rightarrow \bb{R}$ is differentiable. When finding a tangent plane on $(\bar x_1, \bar x_2)$, we need to get at least two independent vectors: $\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\right)$ (slice $x_2=0$), and $\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2)\right)$ (slice $x_1=0$)
 		
 		Then the tangent plane with two parameters $\Delta x_1, \Delta x_2$ is:\[
 			(\bar {x_1}, \bar{x_2}, f(\bar {\bd x})) + \Delta x_1\left(1,0,\frac{\p f}{\p x_1}(\bar x_1, \bar x_2) \right)+\Delta x_2\left(0,1,\frac{\p f}{\p x_2}(\bar x_1, \bar x_2)\right)
 		\]\[
-			=\left(\bar{ x_1}+\Delta x_1 , \bar{x_2}+\Delta x_2, f(\bar {\bd x})+ \frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\Delta x_1 + \frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\Delta x_2 \right)
+			=\left(\bar{ x_1}+\Delta x_1 , \bar{x_2}+\Delta x_2, f(\bar {\bd x})+ \frac{\p f}{\p x_1}(\bar x_1, \bar x_2)\Delta x_1 + \frac{\p f}{\p x_2}(\bar x_1, \bar x_2)\Delta x_2 \right)
 		\]
 	\end{block}
 	This interpretation can be extended to $n$ dimension.

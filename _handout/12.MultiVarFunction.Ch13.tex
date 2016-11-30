@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[hyperref]{beamerarticle}
 
-% \documentclass[final]{beamer}
+%\documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -48,7 +48,7 @@
 \begin{frame}[t]{Definitions}
 	\begin{defn}
 		[Function, Domain, Target, Image: General Definitions]
-		\uline{Function} $f:A\rightarrow B$ is a rule that assign each object of $A$ (\uline{domain}) to one object in $B$ (\uline{target space}). \uline{Image} of $f$ is $\{f(\mathbf{x})\vert \mathbf{x}\in A\}\in B$
+		\uline{Function} $f:A\rightarrow B$ is a rule that assigns each object of $A$ (\uline{domain}) to one object in $B$ (\uline{target space}). \uline{Image} of $f$ is $\{f(\mathbf{x})\vert \mathbf{x}\in A\}\subset B$
 	\end{defn}
 	\begin{block}
 		{Examples: $f:\mathbb{R}^n\rightarrow\mathbb{R}$}
@@ -157,7 +157,7 @@
 	\begin{defn}
 		[Monomials on $\mathbb{R}^k$]
 		$f:\mathbb{R}^k\rightarrow\mathbb{R}$ is a \uline{monomial} if:\[
-			f(\mathbf{x})= \bar c \prod_{i}^k x_i^{\bar{a_i}}, \quad a_i\in\mathbb{N}+\{0\}
+			f(\mathbf{x})= \bar c \prod_{i}^k x_i^{\bar{a_i}}, \quad a_i\in\mathbb{N}\cup\{0\}
 		\]
 		The \uline{degree} of above monomial is $\sum_i^k a_i$
 	\end{defn}
