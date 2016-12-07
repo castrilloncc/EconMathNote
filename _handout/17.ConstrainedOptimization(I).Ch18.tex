@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[hyperref]{beamerarticle}
 
-% \documentclass[final]{beamer}
+%\documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -37,7 +37,7 @@
 \subtitle{Ch.18}
 
 \begin{document}
-	
+
 \maketitle
 
 \mode<presentation>{
@@ -102,7 +102,7 @@
 	\begin{thm}
 		[18.1] Let $f,h$ be $C^1$ functions of $\bd{x}\in\bb{R}^2$. Suppose $\bd{x^\ast}$ is a solution of the max(min)imization problem\[
 			\arg\max_{\bd{x}} f(\bd{x}) \quad s.t. \quad h(\bd{x})=\bar a
-		\] 
+		\]
 		If $\bd{x^\ast}$ is not a critical point of $h$, Then $\exists (\bd{x}^\ast,\mu^\ast)$ s.t. \[
 			L(\bd{x},\mu):= f(\bd{x})+\mu(\bar{a}-h(\bd{x}))\quad\land\quad DL_{\bd{x},\mu}=\bd{0}
 		\]
@@ -114,14 +114,14 @@
 %--- Next Frame ---%
 \begin{frame}[t]{Constraint Qualification}
 	\begin{block}
-		{Constraint Qualification (CQ)}If $Dh_{\bd{x}}(\bd{x^\ast})=0$ ($i.e.,$ there is critical point of constraint function),  we cannot use Th 18.1. This condition is \uline{constraint qualification} (CQ). If we have points which can not pass the constraint qualification, we should include these points among our candidates for a solution to the original constrained maximization problem, along with the critical points of $L$
+		{Constraint Qualification (CQ)}If $Dh_{\bd{x}}(\bd{x^\ast})=\mathbf{0}$ ($i.e.,$ there is critical point of constraint function),  we cannot use Th 18.1. This condition is \uline{constraint qualification} (CQ). If we have points which can not pass the constraint qualification, we should include these points among our candidates for a solution to the original constrained maximization problem, along with the critical points of $L$
 	\end{block}
 	\begin{block}
 		{Nondegenerate CQ (NDCQ)} If there are $m$ equality constraints, NDCQ is $DH_{i\bd{x}}(\bd{x^\ast})\neq \bd{0}$ for all $i=1,\cdots,m$ and this means\[
 			rank D\bd{H}_{\bd{x}}(\bd{x^\ast}) = m
 		\]
 	\end{block}
-	Note: NDCQ is a regularity condition: passing NDCQ implies that the constraint set has a well-defined ($n-m$) dimensional tangent hyperplane at $\bd{x^\ast}$. 
+	Note: NDCQ is a regularity condition: passing NDCQ implies that the constraint set has a well-defined ($n-m$) dimensional tangent hyperplane at $\bd{x^\ast}$.
 \end{frame}
 %--- Next Frame ---%
 \begin{frame}[t]{FOCs of General Equality Constraints}
@@ -187,7 +187,7 @@
 			\item $\bar{\bd{b}}-\bd{G}(\bd{x^\ast})\ge 0$
 		\end{enumerate}
 	\end{thm}
-	Note: $\bd{\lambda}:=(\lambda_1,\cdots,\lambda_k)\in \bb{R}^k$. When $i$th constraint is not binding, $\lambda_i=0$ (like unconstraint) and when $j$th constraint is binding, $\lambda_j> 0$ (like equality constraint). 
+	Note: $\bd{\lambda}:=(\lambda_1,\cdots,\lambda_k)\in \bb{R}^k$. When $i$th constraint is not binding, $\lambda_i=0$ (like unconstraint) and when $j$th constraint is binding, $\lambda_j> 0$ (like equality constraint).
 \end{frame}
 %--- Next Frame ---%
 % section inequality_constraints (end)
@@ -253,4 +253,3 @@
 %--- Next Frame ---%
 % section kuhn_tucker_formulation (end)
 \end{document}
-
