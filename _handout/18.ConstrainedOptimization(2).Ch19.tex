@@ -1,7 +1,7 @@
-\documentclass[a4paper,11pt]{article}
-\usepackage[hyperref]{beamerarticle}
+%\documentclass[a4paper,11pt]{article}
+%\usepackage[hyperref]{beamerarticle}
 
-% \documentclass[final]{beamer}
+\documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -37,7 +37,7 @@
 \subtitle{Ch.19}
 
 \begin{document}
-	
+
 \maketitle
 
 \mode<presentation>{
@@ -57,7 +57,7 @@
 		\end{enumerate}
 	\end{block}
 	Note: \begin{itemize}
-		\item To analyze the sensitivity, we should (1) get $\bd{x^\ast}$, the solution of the optimization problem when parameters $\bd{a}$ are given. And then, we should (2) see the solution $\bd{x^\ast}$ as the function of the parameters. 
+		\item To analyze the sensitivity, we should (1) get $\bd{x^\ast}$, the solution of the optimization problem when parameters $\bd{a}$ are given. And then, we should (2) see the solution $\bd{x^\ast}$ as the function of the parameters.
 	\item You should be able to distinguish between variables ($e.g.,$ $\bd{x}$, $\bd{\mu}$) and parameters ($e.g.,$ $\bd{a}$). To distinguish explicitly, we denote a function $f$ of variables $\bd{x}$ and parameters $\bd{a}$ by:\[
 		f(\bd{x};\bd{a})
 	\]
@@ -117,7 +117,7 @@
 \begin{frame}[t]{Envelope Theorems: Unconstrained Problems}
 	\begin{thm}
 		[19.4] Let $f(\bd{x}:a)$ be a $C^1$ function of $\bd{x}\in\bb{R}^n$ and scalar $a$. For a given parameter $a$, consider the unconstrained max(min)imization problem\[
-			\arg\max_\bd{x} f(\bd{x};a) 
+			\arg\max_\bd{x} f(\bd{x};a)
 		\] And let $\bd{x^\ast}(a)$ be a solution of above problem. Suppose that $\bd{x^\ast}(a)$ is a $C^1$ function of $a$. Then, \[
 			\frac{d}{da} f(\bd{x^\ast}(a);a) = \frac{\p}{\p a}f(\bd{x^\ast}(a);a)=\frac{\p}{\p a}f^\ast(a)
 		\]
@@ -147,7 +147,7 @@
 	\begin{thm}
 		[19.6] Let $f,\bd{H}$ be $C^2$ functions on $\bd{x}\in\bb{R}^n$. Consider the equality constrained max(min)imization problem\[
 			\arg\max_{\bd{x}} f(\bd{x}) \quad s.t. \quad \bd{H}(x)=\bd{c}
-		\] 
+		\]
 		Let $L := f(\bd{x}) + \bd{\mu}(\bd{c}-\bd{H})$ and suppose that
 		\begin{enumerate}
 			\item $\bd{H}(\bd{x^\ast})=\bd{c}$ (Satisfies constraint)
@@ -183,7 +183,7 @@
 			\item If $H$ is PD, then $\bd{x^\ast}$ is strict local min. If ND, $\bd{x^\ast}$ is strict local max.
 			\begin{enumerate}[(a)]
 				\item If ${\rm sign}(\det H)={\rm sign}((-1)^m)$ and all $n-m$ LPMs have same sign, $H$ is \uline{PD} on the constraint set
-				\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-m$ LPMs alternates in sign, $H$ is \uline{ND} on the constraint set 
+				\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-m$ LPMs alternates in sign, $H$ is \uline{ND} on the constraint set
 			\end{enumerate}
 		\end{enumerate}
 	\end{block}
@@ -192,7 +192,7 @@
 
 \begin{frame}[t]{Sufficient SOC: Mixed Constraints}
 	\begin{thm}
-		[19.8] Let $f,\bd{H}\in\bb{R}^m,\bd{G}\in\bb{R}^k$ be $C^2$ functions on $\bd{x}\in\bb{R}^n$. Consider the mixed constrained max(min)imization problem $\arg\max_{\bd{x}} f(\bd{x})\quad s.t.\quad \bd{H}(\bd{x})=\bd{c} \land \bd{G}(\bd{x})\le\bd{b}$. 
+		[19.8] Let $f,\bd{H}\in\bb{R}^m,\bd{G}\in\bb{R}^k$ be $C^2$ functions on $\bd{x}\in\bb{R}^n$. Consider the mixed constrained max(min)imization problem $\arg\max_{\bd{x}} f(\bd{x})\quad s.t.\quad \bd{H}(\bd{x})=\bd{c} \land \bd{G}(\bd{x})\le\bd{b}$.
 		\begin{enumerate}
 			\item Form the Lagrangian function $L$\[
 				L:=f(\bd{x}) + \bd{\mu}(\bd{c}-\bd{H}(\bd{x})) + \bd{\lambda}(\bd{b}-\bd{G}(\bd{x}))
@@ -213,7 +213,7 @@
 				D\bd{G_E}_{\bd{x}}^T & D\bd{H}_{\bd{x}}^T & D^2L_{\bd{x}}
 			\end{pmatrix}\right\vert_{(\bd{\lambda_E,\mu,x)=(\lambda_E^\ast,\mu^\ast,x^\ast})}
 		\]
-		Let $F_{ab} := \frac{\p}{\p a}\frac{\p}{\p b}F$. Then 
+		Let $F_{ab} := \frac{\p}{\p a}\frac{\p}{\p b}F$. Then
 		\[
 			H = \left.\begin{pmatrix}
 				\cancelto{\bd{0}}{L_{\lambda_E\lambda_E}}&\cancelto{\bd{0}}{L_{\lambda_E\mu}}&\cancelto{D\bd{G_E}_{\bd{x}}}{L_{\lambda\bd{x}}}\\
@@ -228,8 +228,8 @@
 \begin{frame}[t]{Deteriminig Definiteness of Bordered Hessian (Mixed Constraints)}
 	\begin{block}{Determining Definiteness}
 		\begin{enumerate}[(a)]
-			\item If ${\rm sign}(\det H)={\rm sign}((-1)^(m+e))$ and all $n-(m+e)$ LPMs have same sign, $H$ is \uline{PD} on the constraint set
-			\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-(m+e)$ LPMs alternates in sign, $H$ is \uline{ND} on the constraint set 
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^{(m+e)})$ and all $n-(m+e)$ LPMs have same sign, $H$ is \uline{PD} on the constraint set
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-(m+e)$ LPMs alternates in sign, $H$ is \uline{ND} on the constraint set
 		\end{enumerate}
 	\end{block}
 \end{frame}
@@ -253,4 +253,3 @@
 % section proofs_of_the_first_order_conditions (end)
 
 \end{document}
-

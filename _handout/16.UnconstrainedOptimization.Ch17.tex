@@ -1,7 +1,7 @@
-\documentclass[a4paper,11pt]{article}
-\usepackage[hyperref]{beamerarticle}
+%\documentclass[a4paper,11pt]{article}
+%\usepackage[hyperref]{beamerarticle}
 
-% \documentclass[final]{beamer}
+\documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -37,7 +37,7 @@
 \subtitle{Ch.17}
 
 \begin{document}
-	
+
 \maketitle
 
 \mode<presentation>{
@@ -61,7 +61,7 @@
 		\end{enumerate}
 	\end{defn}
 	\begin{itemize}
-		\item Definition of min: $>,\ge \rightarrow <, \le$ 
+		\item Definition of min: $>,\ge \rightarrow <, \le$
 	\end{itemize}
 \end{frame}
 %--- Next Frame ---%
@@ -90,7 +90,7 @@
 \label{sec:second_order_conditions}
 \begin{frame}[t]{SOC (Sufficient Conditions)}
 	\begin{thm}
-		[17.2] Let $f:U\in\bb{R}^n\rightarrow\bb{R}$ be a $C^2$ function and $U$ is open. Suppose $\bd{x^\ast}$ is a critical point of $f$. ($i.e.,Df_{\bd{x}}(\bd{x^\ast})=\bd{0}$) Then, 
+		[17.2] Let $f:U\in\bb{R}^n\rightarrow\bb{R}$ be a $C^2$ function and $U$ is open. Suppose $\bd{x^\ast}$ is a critical point of $f$. ($i.e.,Df_{\bd{x}}(\bd{x^\ast})=\bd{0}$) Then,
 		\begin{enumerate}
 			\item If Hessian ($D^2 f_\bd{x}(\bd{x^\ast})$) is ND, then $\bd{x}^\ast$ is a strict local max of $f$
 			\item If Hessian ($D^2 f_\bd{x}(\bd{x^\ast})$) is PD, then $\bd{x}^\ast$ is a strict local min of $f$
@@ -138,8 +138,8 @@
 		[17.8]
 		Let $f:U\in \bb{R}^n\rightarrow \bb{R}$ be a $C^2$ function with convex open domain $U$.
 		\begin{enumerate}
-			\item $DF(\bd{x^\ast})=\bd{0}$ and $D^2f_{\bd{x}}$ is PSD on $U$ $\Rightarrow $ $\bd{x^\ast}$ is a global max of $f$ on $U$
-			\item $DF(\bd{x^\ast})=\bd{0}$ and $D^2f_{\bd{x}}$ is NSD on $U$ $\Rightarrow $ $\bd{x^\ast}$ is a global min of $f$ on $U$
+			\item $DF(\bd{x^\ast})=\bd{0}$ and $D^2f_{\bd{x}}$ is PSD on $U$ $\Rightarrow $ $\bd{x^\ast}$ is a global min of $f$ on $U$
+			\item $DF(\bd{x^\ast})=\bd{0}$ and $D^2f_{\bd{x}}$ is NSD on $U$ $\Rightarrow $ $\bd{x^\ast}$ is a global max of $f$ on $U$
 		\end{enumerate}
 	\end{thm}
 \end{frame}
@@ -294,9 +294,9 @@
 			\beta^\ast \rightarrow (X^T X)^{-1}X^T Y
 		\]
 		% This implies that $c$ becomes trivial as size of data ($N$) increasing
-		
+
 		Note2: We should check SOC: whether $H=D^2f_{\bd{\beta},c}(\bd{\beta^\ast},c^\ast)$ is PD or not.  Our object function has quadratic form with positive sign with regard to $\bd{\beta},c$ \uline{when $\bd{x_j}$ is independent with each other} and this means $f$ is PD (when $\bd{x_j}$ is independent with each other: covariance with other variables are 0).
-		
+
 		Note3: Some researchers denote $X^T$ by $X^\prime$
 \end{frame}
 %--- Next Frame ---%
@@ -304,4 +304,3 @@
 % section economic_applications (end)
 
 \end{document}
-
