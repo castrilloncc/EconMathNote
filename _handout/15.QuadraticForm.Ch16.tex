@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{article}
 \usepackage[hyperref]{beamerarticle}
 
-% \documentclass[final]{beamer}
+%\documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -37,7 +37,7 @@
 \subtitle{Ch.16}
 
 \begin{document}
-	
+
 \maketitle
 
 \mode<presentation>{
@@ -71,7 +71,7 @@
 				a_{11} & 0 & 0&\cdots& 0\\
 				0 & a_{22} & 0&\cdots& 0\\
 				\vdots &\vdots &\vdots &\vdots &\vdots\\
-				0 & 0 & 0 & \cdots & a_{nn} 
+				0 & 0 & 0 & \cdots & a_{nn}
 			\end{pmatrix}
 		\]
 		\begin{itemize}
@@ -103,8 +103,8 @@
 \begin{frame}[t]{Principal Minors of a Matrix}
 	\begin{defn}
 		[Principal Submatrix (PS), Principal Minor (PM)]
-		Let $A$ be an $n\times n$ symmetric matrix. $k$th order \uline{principal submatrix} of $A$ is $k\times k$ submatrix of $A$ obtained by deleting $n-k$ columns $C_1,\cdots,C_{n-k}$ and same $n-k$ rows $R_1,\cdots,R_{n-k}$. 
-		
+		Let $A$ be an $n\times n$ symmetric matrix. $k$th order \uline{principal submatrix} of $A$ is $k\times k$ submatrix of $A$ obtained by deleting $n-k$ columns $C_1,\cdots,C_{n-k}$ and same $n-k$ rows $R_1,\cdots,R_{n-k}$.
+
 		$k$th order \uline{principal minor} of $A$ is the determinant of $k$th order prinicipal submatrix.
 	\end{defn}
 	Note: the number of $k$th order principal submatrix can be $nCk$. We will denote $k$th order principal minor by $PM_k(A)$.
@@ -117,7 +117,7 @@
 
 \begin{frame}[t]{Test for Definiteness}
 	\begin{thm}
-		[16.1,2] Let $A$ be an $n\times n$ symmetric matrix. Then, 
+		[16.1,2] Let $A$ be an $n\times n$ symmetric matrix. Then,
 		\begin{enumerate}
 			\item $A$ is PD iff $LPM_k(A)>0$ $\forall k$
 			\item $A$ is PSD iff $PM_k(A)\ge 0$ $\forall k$
@@ -126,7 +126,7 @@
 			\item Otherwise, $A$ is ID
 		\end{enumerate}
 	\end{thm}
-	Note: We can find more elegant criteria using eigenvalues (Ch.23). To check all $PM$, $\sum_i^n nCi$ determinants should be calculated. 
+	Note: We can find more elegant criteria using eigenvalues (Ch.23). To check all $PM$, $\sum_i^n nCi$ determinants should be calculated.
 \end{frame}
 %--- Next Frame ---%
 % section definiteness_of_quadratic_forms (end)
@@ -224,8 +224,8 @@
 			\underbrace{LPM_{n+m}(H), LPM_{n+m-1}(H), \cdots,LPM_{n+m-(n-m-1)}}_{n-m\text{ LPMs}}
 		\]
 		\begin{enumerate}[(a)]
-			\item If ${\rm sign}(\det H)={\rm sign}((-1)^m)$ and all $n-m$ LPMs have same sign, $Q$ is \uline{PD} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is \uline{strict global min} of $Q$ on the costraint set
-			\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-m$ LPMs alternates in sign, $Q$ is \uline{ND} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is \uline{strict global max} of $Q$ on the costraint set
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^m)$ and all $n-m$ LPMs have same sign, $Q$ is \uline{PD} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=\bd 0$ is \uline{strict global min} of $Q$ on the costraint set
+			\item If ${\rm sign}(\det H)={\rm sign}((-1)^n)$ and following $n-m$ LPMs alternates in sign, $Q$ is \uline{ND} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=\bd 0$ is \uline{strict global max} of $Q$ on the costraint set
 		\end{enumerate}
 	\end{thm}
 \end{frame}
@@ -235,7 +235,7 @@
 	\begin{block}
 		{Continued}
 		\begin{enumerate}[(a)]
-			\item [(c)] if (a),(b) is violated by nonzero LPMs, $Q$ is \uline{ID} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=0$ is neither a max nor a min of $Q$ on the constraint set
+			\item [(c)] if (a),(b) is violated by nonzero LPMs, $Q$ is \uline{ID} on the constraint set $B\bd{x}=\bd{0}$ and $\bd{x}=\bd 0$ is neither a max nor a min of $Q$ on the constraint set
 		\end{enumerate}
 	\end{block}
 	Note: Test for NSD, PSD is much more tedious and trivial in economics $\rightarrow$ SKIP
@@ -244,4 +244,3 @@
 % section linear_constraints_and_bordered_matrices (end)
 
 \end{document}
-

@@ -223,7 +223,7 @@
 				\frac{\p g}{\p t_i} = \begin{pmatrix}
 					\frac{\p f}{\p x_1} & \cdots & \frac{\p f}{\p x_n}
 				\end{pmatrix}\begin{pmatrix}
-					\frac{\p x_1 }{\p t_i}\\
+					\frac{\p x_1 }{\p t_1}\\
 					\vdots\\
 					\frac{\p x_n }{\p t_i}
 				\end{pmatrix}
@@ -253,13 +253,13 @@
 	\begin{block}
 		{Chain Rule III}
 		Let $\bd f(\bd x): \bb{R}^n\rightarrow \bb{R}^m$, $\bd a(t):\bb{R}\rightarrow\bb{R}^n$, and $\bd g(t) = \bd f \circ \bd a (t)$. Then, \[
-			\frac{dg}{dt} = Df_{\bd a}(\bd a(t))\cdot \bd a^\prime (t)
+			\frac{d\bd g}{dt} = Df_{\bd a}(\bd a(t))\cdot \bd a^\prime (t)
 		\]
 	\end{block}
 	\begin{block}
 		{Chain Rule IV}
 		Let $\bd f(\bd x): \bb{R}^n\rightarrow \bb{R}^m$, $\bd a(\bd t ):\bb{R}^s\rightarrow\bb{R}^n$, and $\bd g(\bd t) = \bd f \circ \bd a (\bd t)$. Then, \[
-			{D\bd g}_{\bd t} = {Df}_{\bd a} (\bd a(\bd t))\cdot D\bd a_{\bd t}
+			{D\bd g}_{\bd t} = {D\bd f}_{\bd a} (\bd a(\bd t))\cdot D\bd a_{\bd t}
 		\]
 	\end{block}
 \end{frame}
