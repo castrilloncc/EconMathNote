@@ -1,7 +1,7 @@
-% \documentclass[a4paper,11pt]{article}
-% \usepackage[hyperref]{beamerarticle}
+\documentclass[a4paper,11pt]{article}
+\usepackage[hyperref]{beamerarticle}
 
-\documentclass[final]{beamer}
+% \documentclass[final]{beamer}
 
 \usepackage{kotex}
 \usepackage{amsfonts,amsmath,xob-amssymb}
@@ -221,10 +221,12 @@
 		Let $g(\bd t)=f(\bd{x}(\bd t))$, $g:\bb{R}^s\rightarrow\bb{R}$, $f:\bb{R}^n\rightarrow\bb{R}$, $\bd x :\bb{R}^s\rightarrow\bb{R}^n$. Then, \[
 			Dg_{\bd t} = Df_{\bd x}(\bd x) D {\bd x_{\bd t}(\bd t)}
 			\]\[
-				\frac{\p g}{\p t_i} = \begin{pmatrix}
+				Dg_{\bd t}=\begin{pmatrix}
+					\frac{\p g}{\p t_1} & \cdots \frac{\p g}{\p t_s}
+				\end{pmatrix},\quad\frac{\p g}{\p t_i} = \begin{pmatrix}
 					\frac{\p f}{\p x_1} & \cdots & \frac{\p f}{\p x_n}
 				\end{pmatrix}\begin{pmatrix}
-					\frac{\p x_1 }{\p t_1}\\
+					\frac{\p x_1 }{\p t_i}\\
 					\vdots\\
 					\frac{\p x_n }{\p t_i}
 				\end{pmatrix}
@@ -242,7 +244,7 @@
 		\]This is the derivative of $f$ at $\overline{\bd x}$ in the direction $\overline{\bd v}$, and other notations are $\frac{\p f}{\p \bd v}(\overline{\bd x})$ and $D_{\bd v}f(\overline{\bd x})$
 	\end{block}
 	\begin{thm}
-		[14.2] At any point $\bd x\in D$ and $\nabla f \neq 0$, $\nabla f(\bd x)$ points at $x$ into the direction in which $f$ increases most rapidly
+		[14.2] At any point $\bd x\in D$ and $\nabla f \neq 0$, $\nabla f(\bd x)$ points at $\bd x$ into the direction in which $f$ increases most rapidly
 	\end{thm}
 	This theorem will be used for finding normal vector of tangent hyperplane to level set.
 \end{frame}
