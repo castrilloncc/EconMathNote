@@ -1,5 +1,5 @@
-%\documentclass[a4paper,11pt]{article}
-%\usepackage[hyperref]{beamerarticle}
+% \documentclass[a4paper,11pt]{article}
+% \usepackage[hyperref]{beamerarticle}
 
 \documentclass[final]{beamer}
 
@@ -30,7 +30,7 @@
 \newcommand{\bd}{\mathbf}
 \newcommand{\p}{\partial}
 
-\newcommand{\mail}{\url{econMath.namun+2016su@gmail.com}}
+\newcommand{\mail}{\url{econMath.namun@gmail.com}}
 
 \author[조남운]{\mail}
 \title{Unconstrained Optimization}
@@ -57,7 +57,7 @@
 			\item A point $\bd{x}^\ast$ is a \uline{(global, or absolute) max, maximizer, maximum point} of $f$ on $U$ if $f(\bd{x^\ast})\ge f(\bd{x})\quad\forall \bd{x}\in U$
 			\item $\bd{x^\ast}\in U$ is a \uline{strict (global, or absolute) max} if $\bd{x^\ast}$ is a max and $f(\bd{x^\ast})>f(\bd{x})\quad\forall \bd{x}\in U-\{\bd{x^\ast}\}$
 			\item $\bd{x^\ast}\in U$ is a \uline{local (relative) max} of $f$ if $\exists \epsilon>0 \quad s.t.$ $f(\bd{x^\ast})\ge f(\bd{x})\quad\forall \bd{x}\in B_\epsilon(\bd{x^\ast})\cap U$
-			\item $\bd{x^\ast}\in U$ is a \uline{strict local (relative) max} of $f$ if $\exists \epsilon>0 \quad s.t.$ $f(\bd{x^\ast})> f(\bd{x})\quad\forall \bd{x}\in B_\epsilon(\bd{x^\ast})\cap U$
+			\item $\bd{x^\ast}\in U$ is a \uline{strict local (relative) max} of $f$ if $\exists \epsilon>0 \quad s.t.$ $f(\bd{x^\ast})> f(\bd{x})\quad\forall \bd{x}\in B_\epsilon(\bd{x^\ast})\cap U-\{\bd{x^\ast}\}$
 		\end{enumerate}
 	\end{defn}
 	\begin{itemize}
