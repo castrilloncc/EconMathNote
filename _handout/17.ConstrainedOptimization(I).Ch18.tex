@@ -85,7 +85,7 @@
 		\[
 			\arg\max_{\bd{x}} \Pi(\bd{x})
 		\]\[
-			\Pi(\bd{x}) := \bar p f(\bd{x}) - \bd{w}\bullet\bd{x},\quad \Pi\ge 0 \land \bd{x}\ge 0
+			\Pi(\bd{x}) := \bar p f(\bd{x}) - \bd{w}\bullet\bd{x},\quad \Pi\ge 0 \land \bd{x}\ge \bd{0}
 		\]
 		\begin{itemize}
 			\item $f$: production function, $p$: price of final product
@@ -183,8 +183,8 @@
 			\item $L(\bd{x},\bd{\lambda}):=f(\bd{x})+\bd{\lambda}(\bar{\bd{b}}-\bd{G}(\bd{x}))$
 			\item $DL_{\bd{x}}(\bd{x^\ast,\lambda^\ast})=\bd{0}$
 			\item $\bd{\lambda^\ast}(\bar{\bd{b}}-\bd{G}(\bd{x^\ast}))=\bd{0}$
-			\item $\bd{\lambda}\ge 0$
-			\item $\bar{\bd{b}}-\bd{G}(\bd{x^\ast})\ge 0$
+			\item $\bd{\lambda}\ge \bd{0}$
+			\item $\bar{\bd{b}}-\bd{G}(\bd{x^\ast})\ge \bd{0}$
 		\end{enumerate}
 	\end{thm}
 	Note: $\bd{\lambda}:=(\lambda_1,\cdots,\lambda_k)\in \bb{R}^k$. When $i$th constraint is not binding, $\lambda_i=0$ (like unconstraint) and when $j$th constraint is binding, $\lambda_j> 0$ (like equality constraint).
